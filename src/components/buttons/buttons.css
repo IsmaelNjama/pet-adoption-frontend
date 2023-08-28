@@ -1,0 +1,15 @@
+.login-button, .sign-up-button {
+  background-color: rgb(0,123,255);
+  color: white;
+  border: none;
+  width: 50%;
+  border-radius: 4px;
+}
+.sign-up-button {
+  background-color: #B82937;
+  margin-top: 15px;
+}
+
+.login-button:hover{
+  background-color: #B82937;
+}
