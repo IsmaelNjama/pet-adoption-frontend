@@ -4,6 +4,8 @@
   border: none;
   width: 50%;
   border-radius: 4px;
+
+
 }
 .sign-up-button {
   background-color: #B82937;
@@ -12,4 +14,12 @@
 
 .login-button:hover{
   background-color: #B82937;
+}
+
+.login-modal-wrapper {
+  text-align: center;
+}
+
+.sign-up-wrapper {
+  text-align: center;
 }

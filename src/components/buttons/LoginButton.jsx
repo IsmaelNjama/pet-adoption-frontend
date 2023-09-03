@@ -4,7 +4,7 @@ import LoginModal from "../modals/LoginModal";
 
 function LoginButton() {
   return (
-    <div>
+    <div className="login-modal-wrapper">
       <LoginModal />
     </div>
   );

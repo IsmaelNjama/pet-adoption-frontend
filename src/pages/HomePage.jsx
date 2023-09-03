@@ -4,6 +4,7 @@ import LoginButton from "../components/buttons/LoginButton";
 import SignupButton from "../components/buttons/SignupButton";
 import "../styles/common.css";
 import LoginModal from "../components/modals/LoginModal";
+import Search from "../components/Search";
 
 function HomePage() {
   return (
@@ -11,6 +12,7 @@ function HomePage() {
       <Header />
       <LoginButton />
       <SignupButton />
+      <Search />
     </div>
   );
 }

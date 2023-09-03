@@ -1,15 +1,55 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import "../buttons/buttons.css";
+import { Link, useNavigate } from "react-router-dom";
+import ShowLoginContext from "../../context/ShowLoginContext";
+import FirstNameContext from "../../context/FirstNameContext";
+import LastNameContext from "../../context/LastNameContext";
 
 function SignupModal() {
-  const [show, setShow] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const { firstname, setFirstname } = useContext(FirstNameContext);
+  const { lastname, setLastname } = useContext(LastNameContext);
+  const [phoneNumber, setPhoneNumber] = useState(972);
+  const navigate = useNavigate();
+  const { setShowLogin } = useContext(ShowLoginContext);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleChangeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleChangeConfirmPassword = (e) => {
+    setConfirmPassword(e.target.value);
+  };
+
+  const handleChangeFirstName = (e) => {
+    setFirstname(e.target.value);
+  };
+  const handleChangeLastName = (e) => {
+    setLastname(e.target.value);
+  };
+
+  const handleChangePhoneNumber = (e) => {
+    setPhoneNumber(e.target.value);
+  };
+
+  const handleCreateAccount = () => {
+    setShowLogin(true);
+    setShowSignUp(false);
+  };
+
+  const handleClose = () => setShowSignUp(false);
+  const handleShow = () => setShowSignUp(true);
 
   return (
     <div>
@@ -17,7 +57,7 @@ function SignupModal() {
         Sign Up
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={showSignUp} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Sign Up</Modal.Title>
         </Modal.Header>
@@ -28,6 +68,8 @@ function SignupModal() {
               <Form.Control
                 type="email"
                 placeholder="name@example.com"
+                value={email}
+                onChange={handleChangeEmail}
                 autoFocus
               />
             </Form.Group>
@@ -36,6 +78,8 @@ function SignupModal() {
               <Form.Control
                 type="password"
                 placeholder="enter password"
+                value={password}
+                onChange={handleChangePassword}
                 autoFocus
               />
             </Form.Group>
@@ -44,6 +88,8 @@ function SignupModal() {
               <Form.Control
                 type="password"
                 placeholder="confirm password"
+                value={confirmPassword}
+                onChange={handleChangeConfirmPassword}
                 autoFocus
               />
             </Form.Group>
@@ -52,6 +98,8 @@ function SignupModal() {
               <Form.Control
                 type="text"
                 placeholder="enter Firstname"
+                value={firstname}
+                onChange={handleChangeFirstName}
                 autoFocus
               />
             </Form.Group>
@@ -60,6 +108,8 @@ function SignupModal() {
               <Form.Control
                 type="text"
                 placeholder="enter Lastname"
+                value={lastname}
+                onChange={handleChangeLastName}
                 autoFocus
               />
             </Form.Group>
@@ -68,6 +118,8 @@ function SignupModal() {
               <Form.Control
                 type="number"
                 placeholder="enter phone number"
+                value={phoneNumber}
+                onChange={handleChangePhoneNumber}
                 autoFocus
               />
             </Form.Group>
@@ -77,7 +129,7 @@ function SignupModal() {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleCreateAccount}>
             Create Account
           </Button>
         </Modal.Footer>
@@ -87,9 +139,3 @@ function SignupModal() {
 }
 
 export default SignupModal;
-
-// function SignupModal() {
-//   return <div>SignupModal</div>;
-// }
-
-// export default SignupModal;

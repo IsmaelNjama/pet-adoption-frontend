@@ -5,7 +5,7 @@ import SignupModal from "../modals/SignupModal";
 
 function SignupButton() {
   return (
-    <div>
+    <div className="sign-up-wrapper">
       <SignupModal />
     </div>
   );

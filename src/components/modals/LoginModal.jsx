@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import "../buttons/buttons.css";
+import ShowLoginContext from "../../context/ShowLoginContext";
+import LoggedInContext from "../../context/LoggedInContext";
+import { useNavigate } from "react-router-dom";
 
 function LoginModal() {
-  const [show, setShow] = useState(false);
+  const navigate = useNavigate();
+  const { showLogin, setShowLogin } = useContext(ShowLoginContext);
+  const { isloggedIn, setIsLoggedIn } = useContext(LoggedInContext);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleLoggedIn = () => {
+    setIsLoggedIn(true);
+    setShowLogin(false);
+    navigate("/LoggedInPage");
+  };
+
+  const handleClose = () => setShowLogin(false);
+  const handleShow = () => setShowLogin(true);
 
   return (
     <div>
@@ -17,7 +28,7 @@ function LoginModal() {
         Log In
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={showLogin} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Log In</Modal.Title>
         </Modal.Header>
@@ -43,9 +54,9 @@ function LoginModal() {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Back
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleLoggedIn}>
             Save
           </Button>
         </Modal.Footer>
