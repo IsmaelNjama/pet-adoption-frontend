@@ -8,6 +8,7 @@ import FirstNameContext from "./context/FirstNameContext";
 import LastNameContext from "./context/LastNameContext";
 import LoggedInContext from "./context/LoggedInContext";
 import LoggedInPage from "./pages/LoggedInPage";
+import ProfileSettingsForm from "./components/ProfileSettingsForm";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -23,6 +24,10 @@ function App() {
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/LoggedInPage" element={<LoggedInPage />} />
+                <Route
+                  path="/ProfileSettingsForm"
+                  element={<ProfileSettingsForm />}
+                />
               </Routes>
             </BrowserRouter>
           </LoggedInContext.Provider>
