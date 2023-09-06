@@ -36,7 +36,7 @@ function ProfileSettingsForm() {
         <Form.Control placeholder="Your phone number" />
       </Form.Group>
 
-      <Button variant="primary">Submit</Button>
+      <Button variant="primary">Save</Button>
     </Form>
   );
 }

@@ -9,6 +9,8 @@ import LastNameContext from "./context/LastNameContext";
 import LoggedInContext from "./context/LoggedInContext";
 import LoggedInPage from "./pages/LoggedInPage";
 import ProfileSettingsForm from "./components/ProfileSettingsForm";
+import MyPetsPage from "./pages/MyPetsPage";
+import PetPage from "./pages/PetPage";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -28,6 +30,8 @@ function App() {
                   path="/ProfileSettingsForm"
                   element={<ProfileSettingsForm />}
                 />
+                <Route path="/MyPetsPage" element={<MyPetsPage />} />
+                <Route path="/PetPage" element={<PetPage />} />
               </Routes>
             </BrowserRouter>
           </LoggedInContext.Provider>
