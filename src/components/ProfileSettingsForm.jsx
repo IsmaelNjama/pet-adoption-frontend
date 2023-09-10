@@ -35,6 +35,10 @@ function ProfileSettingsForm() {
         <Form.Label>Phone number</Form.Label>
         <Form.Control placeholder="Your phone number" />
       </Form.Group>
+      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+        <Form.Label>Add short bio</Form.Label>
+        <Form.Control as="textarea" rows={3} />
+      </Form.Group>
 
       <Button variant="primary">Save</Button>
     </Form>

@@ -11,6 +11,7 @@ import LoggedInPage from "./pages/LoggedInPage";
 import ProfileSettingsForm from "./components/ProfileSettingsForm";
 import MyPetsPage from "./pages/MyPetsPage";
 import PetPage from "./pages/PetPage";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -32,6 +33,7 @@ function App() {
                 />
                 <Route path="/MyPetsPage" element={<MyPetsPage />} />
                 <Route path="/PetPage" element={<PetPage />} />
+                <Route path="/SearchPage" element={<SearchPage />} />
               </Routes>
             </BrowserRouter>
           </LoggedInContext.Provider>
