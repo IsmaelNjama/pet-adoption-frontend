@@ -77,7 +77,7 @@ function SignupModal() {
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="enter password"
+                placeholder="Enter your password"
                 value={password}
                 onChange={handleChangePassword}
                 autoFocus
@@ -87,7 +87,7 @@ function SignupModal() {
               <Form.Label>Re-enter Password</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="confirm password"
+                placeholder="Confirm your password"
                 value={confirmPassword}
                 onChange={handleChangeConfirmPassword}
                 autoFocus
@@ -97,7 +97,7 @@ function SignupModal() {
               <Form.Label>Firstname</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="enter Firstname"
+                placeholder="Enter your firstname"
                 value={firstname}
                 onChange={handleChangeFirstName}
                 autoFocus
@@ -107,7 +107,7 @@ function SignupModal() {
               <Form.Label>Lastname</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="enter Lastname"
+                placeholder="Enter your lastname"
                 value={lastname}
                 onChange={handleChangeLastName}
                 autoFocus
@@ -117,7 +117,7 @@ function SignupModal() {
               <Form.Label>Phone number</Form.Label>
               <Form.Control
                 type="number"
-                placeholder="enter phone number"
+                placeholder="Enter your phone number"
                 value={phoneNumber}
                 onChange={handleChangePhoneNumber}
                 autoFocus

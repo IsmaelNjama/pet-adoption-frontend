@@ -46,7 +46,7 @@ function LoginModal() {
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="enter password"
+                placeholder="Enter your password"
                 autoFocus
               />
             </Form.Group>

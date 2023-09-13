@@ -1,6 +1,6 @@
 .login-button, .sign-up-button {
   background-color: rgb(0,123,255);
-  color: white;
+  color: #fff;
   border: none;
   width: 50%;
   border-radius: 4px;
@@ -13,7 +13,8 @@
 }
 
 .login-button:hover{
-  background-color: #B82937;
+  background-color: #fff;
+  color:rgb(17, 15, 15)
 }
 
 .login-modal-wrapper {

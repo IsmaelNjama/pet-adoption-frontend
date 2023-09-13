@@ -8,11 +8,13 @@ import Search from "../components/Search";
 
 function HomePage() {
   return (
-    <div className="homepage-wrapper">
-      <Header />
-      <LoginButton />
-      <SignupButton />
-      <Search />
+    <div className="homepage-outer-wrapper">
+      <div className="homepage-inner-wrapper">
+        <Header />
+        <LoginButton />
+        <SignupButton />
+        <Search />
+      </div>
     </div>
   );
 }
