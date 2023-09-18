@@ -29,9 +29,11 @@ function LoginModal() {
       </Button>
 
       <Modal show={showLogin} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Log In</Modal.Title>
+        <Modal.Header className="login-modal-header">
+          <Modal.Title>Login</Modal.Title>
+          <div>Please fill your credentials to login</div>
         </Modal.Header>
+
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">

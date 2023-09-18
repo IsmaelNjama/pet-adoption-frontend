@@ -9,12 +9,17 @@ function Header() {
   const { isLoggedIn } = useContext(LoggedInContext);
   return (
     <div className="header-wrapper">
-      <h2>Pet Adoption Hub</h2>
+      <h1>Pet Adoption Hub</h1>
       {isLoggedIn ? (
-        <p>
-          Welcome {firstname} {lastname} to the Pet Adoption Hub and discover
-          your perfect companion
-        </p>
+        <section>
+          <h2>
+            Welcome Back!!! {firstname} {lastname}
+          </h2>
+          <p>
+            For things that make you go AWWW!!!... like puppies,bunnies and so
+            on. Feel free and discover your perfect companion.
+          </p>
+        </section>
       ) : (
         <p>
           Welcome to the Pet Adoption Hub and discover your perfect companion

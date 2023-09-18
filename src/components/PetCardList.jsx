@@ -9,7 +9,7 @@ function PetCardList() {
   };
   return (
     <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src="holder.js/100px200" />
+      <Card.Img variant="top" src="../assets/cat-dog.jpg/100px200" />
       <Card.Body>
         <Card.Title>Pet's name</Card.Title>
         <Card.Text>

@@ -8,10 +8,14 @@ import ProfileSettingsButton from "../components/buttons/ProfileSettingsButton";
 function LoggedInPage() {
   return (
     <div>
-      <Header />
-      <SearchButton />
-      <ProfileSettingsButton />
-      <Link to="/MyPetsPage">My Pets</Link>
+      <div className="user-profile-panel">
+        <Link className="my-pets-link" to="/MyPetsPage">
+          <h2>My Pets</h2>
+        </Link>
+        <Header />
+        <SearchButton />
+        <ProfileSettingsButton />
+      </div>
     </div>
   );
 }

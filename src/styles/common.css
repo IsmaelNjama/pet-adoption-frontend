@@ -22,10 +22,30 @@
   border-radius: 8px;
   height: 500px ;
   margin: auto;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(2px);
   text-align: center;
 }
 
 .header-wrapper {
   text-align: center;
+  
+  margin: auto;
+  height: 350px;
+  width: 50%;
 }
+.login-modal-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-profile-panel {
+  display: flex;
+}
+
+.my-pets-link {
+  text-decoration: none;
+  margin: 10px;
+}
+
+
+

@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
+import "./buttons.css";
 
 function SearchButton() {
   const navigate = useNavigate();
@@ -10,7 +11,11 @@ function SearchButton() {
 
   return (
     <div>
-      <Button variant="outline-primary" onClick={handleSearchPageNavigation}>
+      <Button
+        className="search-button"
+        variant="outline-primary"
+        onClick={handleSearchPageNavigation}
+      >
         Search
       </Button>
     </div>
