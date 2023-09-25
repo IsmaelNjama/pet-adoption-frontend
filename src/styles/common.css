@@ -47,5 +47,58 @@
   margin: 10px;
 }
 
+.profile-form-wrapper {
+  margin:auto;
+  margin-top: 70px;
+  height: 600px;
+  padding: 20px;
+  background: linear-gradient(to bottom,#f9f9f9, #e0e0e0);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgb(0, 0, 0,0.1);
+}
+
+.form-label {
+  font-size: 18px;
+  color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.pet-page-container {
+  width: 70%;
+  margin: auto;
+  margin-top: 50px;
+  background: linear-gradient(to bottom,#fdfcfb, #e2e1e0);
+  height: 450px;
+
+}
+
+.pet-detail-col {
+  padding: 10px;
+  background-color:#ffffff ;
+  border: 1px solid #e0e0e0 ;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+.pet-image-container {
+  border: 1px solid red;
+  height: 200px;
+  text-align: center;
+
+}
+.pet-image {
+  height: 100px;
+}
+
+
+
 
 

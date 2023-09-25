@@ -25,3 +25,10 @@
   text-align: center;
 }
 
+.profile-settings-button {
+  background:#007bff ;
+  border:none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
