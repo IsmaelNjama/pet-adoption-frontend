@@ -7,6 +7,7 @@ function SearchButton() {
   const navigate = useNavigate();
   const handleSearchPageNavigation = () => {
     navigate("/SearchPage");
+    navigate("/AdminPage");
   };
 
   return (

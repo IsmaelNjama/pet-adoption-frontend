@@ -12,6 +12,8 @@ import ProfileSettingsForm from "./components/ProfileSettingsForm";
 import MyPetsPage from "./pages/MyPetsPage";
 import PetPage from "./pages/PetPage";
 import SearchPage from "./pages/SearchPage";
+import Dashboard from "./pages/admin/Dashboard";
+import AdminPage from "./pages/admin/AdminPage";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -34,6 +36,7 @@ function App() {
                 <Route path="/MyPetsPage" element={<MyPetsPage />} />
                 <Route path="/PetPage" element={<PetPage />} />
                 <Route path="/SearchPage" element={<SearchPage />} />
+                <Route path="/AdminPage" element={<AdminPage />} />
               </Routes>
             </BrowserRouter>
           </LoggedInContext.Provider>

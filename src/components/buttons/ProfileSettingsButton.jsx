@@ -9,6 +9,7 @@ function ProfileSettingsButton() {
   const handleProfileNavigate = () => {
     navigate("/ProfileSettingsForm");
   };
+
   return (
     <div>
       <Button variant="outline-primary" onClick={handleProfileNavigate}>
