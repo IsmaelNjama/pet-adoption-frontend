@@ -118,6 +118,18 @@ textarea {
   border: none;
 }
 
+.pet-card-list-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pet-card {
+  border: 1px solid blue;
+  padding: 10px;
+  margin: 5px;
+  margin-right: 10px;
+}
+
 
 
 
