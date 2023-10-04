@@ -10,10 +10,21 @@ function HomePage() {
   return (
     <div className="homepage-outer-wrapper">
       <div className="homepage-inner-wrapper">
-        <Header />
-        <LoginButton />
-        <SignupButton />
-        <Search />
+        <div className="header-search-wrapper">
+          <Header />
+          <div>
+            <Search />
+          </div>
+        </div>
+        <div className="login-signup-wrapper">
+          <div className="homepage-image"></div>
+          <div>
+            <LoginButton />
+          </div>
+          <div className="homepage-signup-button">
+            <SignupButton />
+          </div>
+        </div>
       </div>
     </div>
   );
