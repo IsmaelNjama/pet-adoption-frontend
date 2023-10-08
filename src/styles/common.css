@@ -87,28 +87,36 @@
   flex-direction: column;
 }
 
-.logged-in-page-wrapper {
+/* .user-panel-pets-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
   background-color: #f5f5f5;
-  /* border: 1px solid green; */
-}
+  border: 1px solid green;
+} */
 
-.user-profile-panel {
-  background: #fff;
+.logged-in-page {
+  background:#f5f5f5;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  /* display: flex; */
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  margin-top: 30px;
 }
 
 .my-pets-link {
   text-decoration: none;
   margin: 10px;
   font-size: 24px;
+  color: #333;
+}
+
+.my-pets-link:hover {
+  color: #007bff;
 }
 
 
@@ -204,7 +212,23 @@ textarea {
   width: 20%;
 }
 
+.loader-wrapper {
+  color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: auto;
+}
 
+
+.search-profile-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  width: 100%;
+  margin-top: 0;
+}
 
 
 

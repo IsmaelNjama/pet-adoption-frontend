@@ -7,18 +7,16 @@ import ProfileSettingsButton from "../components/buttons/ProfileSettingsButton";
 
 function LoggedInPage() {
   return (
-    <div>
-      <div>
+    <div className="logged-in-page">
+      <div className="search-profile-wrapper">
         <SearchButton />
         <ProfileSettingsButton />
       </div>
-      <div className="logged-in-page-wrapper">
-        <div className="user-profile-panel">
-          <Header />
-          <Link className="my-pets-link" to="/MyPetsPage">
-            <h2>My Pets</h2>
-          </Link>
-        </div>
+      <div>
+        <Header />
+        <Link className="my-pets-link" to="/MyPetsPage">
+          <h2>My Pets</h2>
+        </Link>
       </div>
     </div>
   );
