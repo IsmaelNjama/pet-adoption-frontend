@@ -5,17 +5,20 @@ import LogOut from "../../components/LogOut";
 
 function Dashboard() {
   return (
-    <div>
+    <div className="dashboard-wrapper">
+      <div className="logout-wrapper">
+        <div className="title">Pet Adoption Hub</div>
+        <LogOut />
+      </div>
       <div className="dashboard-sidebar">
-        <div>Admin</div>
-        <div>
+        <div className="admin-wrapper">
+          <div className="admin-title">Admin</div>
+        </div>
+        <div className="all-users-wrapper">
           <AllUsers />
         </div>
-        <div>
+        <div className="all-pets-wrapper">
           <AllPets />
-        </div>
-        <div>
-          <LogOut />
         </div>
       </div>
     </div>
