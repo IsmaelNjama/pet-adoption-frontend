@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -19,6 +19,7 @@ function SignupModal() {
   const [phoneNumber, setPhoneNumber] = useState(972);
   const navigate = useNavigate();
   const { setShowLogin } = useContext(ShowLoginContext);
+  const [isFormValid, setIsFormValid] = useState(false);
 
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
@@ -43,9 +44,25 @@ function SignupModal() {
     setPhoneNumber(e.target.value);
   };
 
-  const handleCreateAccount = () => {
-    setShowLogin(true);
-    setShowSignUp(false);
+  useEffect(() => {
+    const isValid =
+      email &&
+      password &&
+      confirmPassword &&
+      firstname &&
+      lastname &&
+      phoneNumber;
+    setIsFormValid(isValid);
+  }, [email, password, firstname, lastname, phoneNumber]);
+
+  const handleCreateAccount = (e) => {
+    e.preventDefault();
+    if (isFormValid) {
+      setShowLogin(true);
+      setShowSignUp(false);
+    } else {
+      setShowSignUp(true);
+    }
   };
 
   const handleClose = () => setShowSignUp(false);
@@ -71,6 +88,7 @@ function SignupModal() {
                 value={email}
                 onChange={handleChangeEmail}
                 autoFocus
+                required
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
@@ -81,6 +99,7 @@ function SignupModal() {
                 value={password}
                 onChange={handleChangePassword}
                 autoFocus
+                required
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
@@ -91,6 +110,7 @@ function SignupModal() {
                 value={confirmPassword}
                 onChange={handleChangeConfirmPassword}
                 autoFocus
+                required
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput4">
@@ -101,6 +121,7 @@ function SignupModal() {
                 value={firstname}
                 onChange={handleChangeFirstName}
                 autoFocus
+                required
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput5">
@@ -111,6 +132,7 @@ function SignupModal() {
                 value={lastname}
                 onChange={handleChangeLastName}
                 autoFocus
+                required
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput6">
@@ -121,6 +143,7 @@ function SignupModal() {
                 value={phoneNumber}
                 onChange={handleChangePhoneNumber}
                 autoFocus
+                required
               />
             </Form.Group>
           </Form>
@@ -129,7 +152,11 @@ function SignupModal() {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleCreateAccount}>
+          <Button
+            variant="primary"
+            disabled={!isFormValid}
+            onClick={handleCreateAccount}
+          >
             Create Account
           </Button>
         </Modal.Footer>

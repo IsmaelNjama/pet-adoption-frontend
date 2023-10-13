@@ -17,13 +17,10 @@ function HomePage() {
           </div>
         </div>
         <div className="login-signup-wrapper">
-          <div className="homepage-image"></div>
-          <div>
-            <LoginButton />
-          </div>
-          <div className="homepage-signup-button">
-            <SignupButton />
-          </div>
+          <span>Have an account already??</span>
+          <LoginButton />
+          <span>OR</span>
+          <SignupButton />
         </div>
       </div>
     </div>
