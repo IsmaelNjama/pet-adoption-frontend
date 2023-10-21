@@ -11,7 +11,7 @@ function Header() {
     <div className="header-wrapper">
       <h1>Pet Adoption Hub</h1>
       {isLoggedIn ? (
-        <section>
+        <section className="welcome-section">
           <h2>
             Welcome Back!!! {firstname} {lastname}
           </h2>
@@ -21,11 +21,11 @@ function Header() {
           </p>
         </section>
       ) : (
-        <p>
+        <p className="welcome-message">
           Welcome to the Pet Adoption Hub and discover your perfect companion
         </p>
       )}
-      <section>
+      <section className="commitment-section">
         We're committed to matching each pet with the right family
       </section>
     </div>

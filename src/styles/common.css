@@ -9,6 +9,7 @@
   width: 100%;
   background-color: #f0f0f0;
   padding: 50px;
+  height: 100vh;
 
   
 }
@@ -267,5 +268,45 @@ textarea {
   
 }
 
+.welcome-section {
+
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+ 
+}
+
+.welcome-header {
+  font-size: 1.5rem;
+  color: #333;
+  margin-top: 20px;
+} 
+
+.commitment-section {
+  font-size: 1,2rem;
+  color: #555;
+  margin-top: 20px;
+}
+
+
+@media (max-width: 768px) {
+  .header-wrapper {
+    padding: 10px;
+  }
+
+  .welcome-section {
+    padding: 10px;
+  }
+
+  .welcome-message {
+    font-size: 1.2rem;
+  }
+
+  .commitment-section {
+    font-size: 1rem;
+  }
+  
+}
 
 

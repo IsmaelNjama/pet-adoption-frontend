@@ -8,6 +8,8 @@ import { Link, useNavigate } from "react-router-dom";
 import ShowLoginContext from "../../context/ShowLoginContext";
 import FirstNameContext from "../../context/FirstNameContext";
 import LastNameContext from "../../context/LastNameContext";
+import axios from "axios";
+import LoginModal from "./LoginModal";
 
 function SignupModal() {
   const [showSignUp, setShowSignUp] = useState(false);
@@ -55,11 +57,24 @@ function SignupModal() {
     setIsFormValid(isValid);
   }, [email, password, firstname, lastname, phoneNumber]);
 
-  const handleCreateAccount = (e) => {
+  const handleCreateAccount = async (e) => {
     e.preventDefault();
     if (isFormValid) {
       setShowLogin(true);
       setShowSignUp(false);
+      const user = {
+        email: email,
+        password: password,
+        firstname: firstname,
+        lastname: lastname,
+        phoneNumber: phoneNumber,
+      };
+      try {
+        const response = await axios.post("http://localhost:3500/users", user);
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
     } else {
       setShowSignUp(true);
     }

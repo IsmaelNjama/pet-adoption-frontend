@@ -17,7 +17,7 @@ function HomePage() {
           </div>
         </div>
         <div className="login-signup-wrapper">
-          <span>Have an account already??</span>
+          <span>Have an account already?</span>
           <LoginButton />
           <span>OR</span>
           <SignupButton />

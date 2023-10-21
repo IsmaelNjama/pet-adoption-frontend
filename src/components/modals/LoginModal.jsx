@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -12,12 +12,23 @@ function LoginModal() {
   const navigate = useNavigate();
   const { showLogin, setShowLogin } = useContext(ShowLoginContext);
   const { isloggedIn, setIsLoggedIn } = useContext(LoggedInContext);
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [canLogIn, setCanLogIn] = useState(false);
 
   const handleLoggedIn = () => {
     setIsLoggedIn(true);
     setShowLogin(false);
     navigate("/LoggedInPage");
   };
+
+  useEffect(() => {
+    const isOkayToLogin = [loginEmail, loginPassword].every(
+      (x) => x.trim().length > 0
+    );
+
+    setCanLogIn(isOkayToLogin);
+  }, [loginEmail, loginPassword]);
 
   const handleClose = () => setShowLogin(false);
   const handleShow = () => setShowLogin(true);
@@ -39,6 +50,8 @@ function LoginModal() {
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Email address</Form.Label>
               <Form.Control
+                value={loginEmail}
+                onChange={(event) => setLoginEmail(event.target.value)}
                 type="email"
                 placeholder="name@example.com"
                 autoFocus
@@ -47,6 +60,8 @@ function LoginModal() {
             <Form.Group className="mb-3 " controlId="exampleForm.ControlInput2">
               <Form.Label>Password</Form.Label>
               <Form.Control
+                value={loginPassword}
+                onChange={(event) => setLoginPassword(event.target.value)}
                 type="password"
                 placeholder="Enter your password"
                 autoFocus
@@ -58,7 +73,11 @@ function LoginModal() {
           <Button variant="secondary" onClick={handleClose}>
             Back
           </Button>
-          <Button variant="primary" onClick={handleLoggedIn}>
+          <Button
+            variant="primary"
+            disabled={!canLogIn}
+            onClick={handleLoggedIn}
+          >
             Save
           </Button>
         </Modal.Footer>
