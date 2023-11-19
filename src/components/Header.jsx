@@ -15,10 +15,6 @@ function Header() {
           <h2>
             Welcome Back!!! {firstname} {lastname}
           </h2>
-          <p>
-            For things that make you go AWWW!!!... like puppies,bunnies and so
-            on. Feel free and discover your perfect companion.
-          </p>
         </section>
       ) : (
         <p className="welcome-message">

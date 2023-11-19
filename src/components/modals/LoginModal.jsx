@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from "react";
-import { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
@@ -7,17 +6,33 @@ import "../buttons/buttons.css";
 import ShowLoginContext from "../../context/ShowLoginContext";
 import LoggedInContext from "../../context/LoggedInContext";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function LoginModal() {
-  const navigate = useNavigate();
-  const { showLogin, setShowLogin } = useContext(ShowLoginContext);
-  const { isloggedIn, setIsLoggedIn } = useContext(LoggedInContext);
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [canLogIn, setCanLogIn] = useState(false);
 
-  const handleLoggedIn = () => {
+  const navigate = useNavigate();
+  const { showLogin, setShowLogin } = useContext(ShowLoginContext);
+  const { isloggedIn, setIsLoggedIn } = useContext(LoggedInContext);
+
+  const handleLoggedIn = async () => {
     setIsLoggedIn(true);
+    const loginCredentials = {
+      email: loginEmail,
+      password: loginPassword,
+    };
+
+    try {
+      const resp = await axios.post(
+        "http://localhost:5050/auth/login",
+        loginCredentials
+      );
+      console.log(resp);
+    } catch (error) {
+      console.log(error);
+    }
     setShowLogin(false);
     navigate("/LoggedInPage");
   };

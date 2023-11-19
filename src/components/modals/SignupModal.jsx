@@ -18,7 +18,7 @@ function SignupModal() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const { firstname, setFirstname } = useContext(FirstNameContext);
   const { lastname, setLastname } = useContext(LastNameContext);
-  const [phoneNumber, setPhoneNumber] = useState(972);
+  const [phonenumber, setPhonenumber] = useState(972);
   const navigate = useNavigate();
   const { setShowLogin } = useContext(ShowLoginContext);
   const [isFormValid, setIsFormValid] = useState(false);
@@ -42,8 +42,8 @@ function SignupModal() {
     setLastname(e.target.value);
   };
 
-  const handleChangePhoneNumber = (e) => {
-    setPhoneNumber(e.target.value);
+  const handleChangephonenumber = (e) => {
+    setPhonenumber(e.target.value);
   };
 
   useEffect(() => {
@@ -53,9 +53,9 @@ function SignupModal() {
       confirmPassword &&
       firstname &&
       lastname &&
-      phoneNumber;
+      phonenumber;
     setIsFormValid(isValid);
-  }, [email, password, firstname, lastname, phoneNumber]);
+  }, [email, password, confirmPassword, firstname, lastname, phonenumber]);
 
   const handleCreateAccount = async (e) => {
     e.preventDefault();
@@ -67,11 +67,15 @@ function SignupModal() {
         password: password,
         firstname: firstname,
         lastname: lastname,
-        phoneNumber: phoneNumber,
+        phonenumber: phonenumber,
       };
+
       try {
-        const response = await axios.post("http://localhost:3500/users", user);
-        console.log(response);
+        const response = await axios.post(
+          "http://localhost:5050/auth/signup",
+          user
+        );
+        console.log(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -155,8 +159,8 @@ function SignupModal() {
               <Form.Control
                 type="number"
                 placeholder="Enter your phone number"
-                value={phoneNumber}
-                onChange={handleChangePhoneNumber}
+                value={phonenumber}
+                onChange={handleChangephonenumber}
                 autoFocus
                 required
               />
