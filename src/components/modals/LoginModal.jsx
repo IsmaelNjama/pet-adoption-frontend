@@ -12,6 +12,7 @@ function LoginModal() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [canLogIn, setCanLogIn] = useState(false);
+  const [loginError, setLoginError] = useState(false);
 
   const navigate = useNavigate();
   const { showLogin, setShowLogin } = useContext(ShowLoginContext);
@@ -30,11 +31,15 @@ function LoginModal() {
         loginCredentials
       );
       console.log(resp);
+      if (resp.status === 200) {
+        setShowLogin(false);
+        navigate("/LoggedInPage");
+      }
+
+      localStorage.setItem("USER", resp.data.accessToken);
     } catch (error) {
-      console.log(error);
+      setLoginError(error.response.data.message);
     }
-    setShowLogin(false);
-    navigate("/LoggedInPage");
   };
 
   useEffect(() => {
@@ -84,6 +89,7 @@ function LoginModal() {
             </Form.Group>
           </Form>
         </Modal.Body>
+        {loginError && <span>{loginError}</span>}
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Back
