@@ -7,6 +7,7 @@ import ShowLoginContext from "../../context/ShowLoginContext";
 import LoggedInContext from "../../context/LoggedInContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { POST, handleError } from "../../utils/api";
 
 function LoginModal() {
   const [loginEmail, setLoginEmail] = useState("");
@@ -20,23 +21,18 @@ function LoginModal() {
 
   const handleLoggedIn = async () => {
     setIsLoggedIn(true);
-    const loginCredentials = {
+    const body = {
       email: loginEmail,
       password: loginPassword,
     };
 
     try {
-      const resp = await axios.post(
-        "http://localhost:5050/auth/login",
-        loginCredentials
-      );
-      console.log(resp);
-      if (resp.status === 200) {
+      const loggedUserResponse = await POST("/auth/login", body);
+      if (loggedUserResponse.status === 200) {
         setShowLogin(false);
         navigate("/LoggedInPage");
+        localStorage.setItem("USER", loggedUserResponse.data.accessToken);
       }
-
-      localStorage.setItem("USER", resp.data.accessToken);
     } catch (error) {
       setLoginError(error.response.data.message);
     }
@@ -64,7 +60,6 @@ function LoginModal() {
           <Modal.Title>Login</Modal.Title>
           <div>Please fill your credentials to login</div>
         </Modal.Header>
-
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -89,7 +84,7 @@ function LoginModal() {
             </Form.Group>
           </Form>
         </Modal.Body>
-        {loginError && <span>{loginError}</span>}
+        {loginError && <span>{loginError}</span>}-{" "}
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Back
