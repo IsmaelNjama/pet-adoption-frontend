@@ -8,20 +8,21 @@ import { Link, useNavigate } from "react-router-dom";
 import ShowLoginContext from "../../context/ShowLoginContext";
 import FirstNameContext from "../../context/FirstNameContext";
 import LastNameContext from "../../context/LastNameContext";
-import axios from "axios";
-import LoginModal from "./LoginModal";
+import { POST } from "../../utils/api";
 
 function SignupModal() {
   const [showSignUp, setShowSignUp] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const { firstname, setFirstname } = useContext(FirstNameContext);
-  const { lastname, setLastname } = useContext(LastNameContext);
-  const [phonenumber, setPhonenumber] = useState(972);
+  const { firstname, setFirstname } = useState("");
+  const { lastname, setLastname } = useState("");
+  const [phonenumber, setPhonenumber] = useState("");
   const navigate = useNavigate();
   const { setShowLogin } = useContext(ShowLoginContext);
   const [isFormValid, setIsFormValid] = useState(false);
+
+  const [formErrorMessage, setFormErrorMessage] = useState(null);
 
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
@@ -59,28 +60,24 @@ function SignupModal() {
 
   const handleCreateAccount = async (e) => {
     e.preventDefault();
-    if (isFormValid) {
-      setShowLogin(true);
-      setShowSignUp(false);
-      const user = {
+
+    try {
+      const body = {
         email: email,
         password: password,
         firstname: firstname,
         lastname: lastname,
         phonenumber: phonenumber,
       };
-
-      try {
-        const response = await axios.post(
-          "http://localhost:5050/auth/signup",
-          user
-        );
-        console.log(response.data);
-      } catch (error) {
-        console.log(error);
+      const signedAccount = await POST("/auth/signup", body);
+      console.log(signedAccount.status);
+      if (signedAccount.status === 200) {
+        navigate("/");
+        setShowSignUp(false);
       }
-    } else {
-      setShowSignUp(true);
+    } catch (error) {
+      const inputErrors = error.response.data.message;
+      setFormErrorMessage(inputErrors);
     }
   };
 
@@ -167,6 +164,9 @@ function SignupModal() {
             </Form.Group>
           </Form>
         </Modal.Body>
+        {formErrorMessage && (
+          <div className="form-input-errors">{formErrorMessage}</div>
+        )}
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close

@@ -34,3 +34,7 @@
   border-radius: 5px;
 }
 
+.form-input-errors {
+  color: red;
+  text-align: center;
+}

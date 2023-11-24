@@ -5,15 +5,19 @@ import Modal from "react-bootstrap/Modal";
 import "../buttons/buttons.css";
 import ShowLoginContext from "../../context/ShowLoginContext";
 import LoggedInContext from "../../context/LoggedInContext";
+import FirstNameContext from "../../context/FirstNameContext";
+import LastNameContext from "../../context/LastNameContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { POST, handleError } from "../../utils/api";
+import { POST } from "../../utils/api";
 
 function LoginModal() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [canLogIn, setCanLogIn] = useState(false);
   const [loginError, setLoginError] = useState(false);
+  const { firstname, setFirstname } = useContext(FirstNameContext);
+  const { lastname, setLastname } = useContext(LastNameContext);
 
   const navigate = useNavigate();
   const { showLogin, setShowLogin } = useContext(ShowLoginContext);
@@ -28,8 +32,11 @@ function LoginModal() {
 
     try {
       const loggedUserResponse = await POST("/auth/login", body);
+
       if (loggedUserResponse.status === 200) {
         setShowLogin(false);
+        setFirstname(loggedUserResponse.data.user.firstname);
+        setLastname(loggedUserResponse.data.user.lastname);
         navigate("/LoggedInPage");
         localStorage.setItem("USER", loggedUserResponse.data.accessToken);
       }
@@ -84,7 +91,7 @@ function LoginModal() {
             </Form.Group>
           </Form>
         </Modal.Body>
-        {loginError && <span>{loginError}</span>}-{" "}
+        {loginError && <div className="form-input-errors">{loginError}</div>}-{" "}
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Back
