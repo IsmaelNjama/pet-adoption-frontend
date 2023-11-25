@@ -157,13 +157,28 @@ textarea {
   width: 100%;
   border: none;
 }
-
 .pet-card-list-wrapper {
   display: flex;
   flex-wrap: wrap;
-  width: 90%;
+  width: 100%;
   margin: auto;
   gap:10px;
+
+}
+
+.user-card-list-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: auto;
+  gap:10px;
+  height: 380px;
+  overflow: hidden;
+}
+
+.user-card-list-wrapper.show-all {
+  height: auto;
+
 }
 
 .pet-card {
@@ -180,6 +195,10 @@ textarea {
   border: 1px solid #ccc;
   border-top: none;
 
+}
+
+.dashboard-content {
+  display: flex;
 }
 
 .loader-wrapper {
@@ -253,6 +272,12 @@ textarea {
   height: 50px;
   width: 100%;
 
+}
+
+.users-list {
+  border: 1px solid red;
+  width: 80%;
+  height: 425px;
 }
 
 .admin-title {

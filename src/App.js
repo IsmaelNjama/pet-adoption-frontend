@@ -14,7 +14,8 @@ import PetPage from "./pages/PetPage";
 import SearchPage from "./pages/SearchPage";
 import Dashboard from "./pages/admin/Dashboard";
 import AdminPage from "./pages/admin/AdminPage";
-import ErrorContext from "./context/ErrorContext";
+import ShowAllUsersContext from "./context/ShowAllUsersContext";
+import AllUsers from "./components/AllUsers";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -22,12 +23,15 @@ function App() {
   const [lastname, setLastname] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [showAllUsers, setShowAllUsers] = useState(false);
   return (
     <ShowLoginContext.Provider value={{ showLogin, setShowLogin }}>
       <FirstNameContext.Provider value={{ firstname, setFirstname }}>
         <LastNameContext.Provider value={{ lastname, setLastname }}>
           <LoggedInContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
-            <ErrorContext.Provider value={{ errorMessage, setErrorMessage }}>
+            <ShowAllUsersContext.Provider
+              value={{ showAllUsers, setShowAllUsers }}
+            >
               <BrowserRouter>
                 <Routes>
                   <Route path="/" element={<HomePage />} />
@@ -40,9 +44,10 @@ function App() {
                   <Route path="/PetPage" element={<PetPage />} />
                   <Route path="/SearchPage" element={<SearchPage />} />
                   <Route path="/AdminPage" element={<AdminPage />} />
+                  <Route path="/AllUsers" element={<AllUsers />} />
                 </Routes>
               </BrowserRouter>
-            </ErrorContext.Provider>
+            </ShowAllUsersContext.Provider>
           </LoggedInContext.Provider>
         </LastNameContext.Provider>
       </FirstNameContext.Provider>

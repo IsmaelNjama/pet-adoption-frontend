@@ -6,8 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import "../buttons/buttons.css";
 import { Link, useNavigate } from "react-router-dom";
 import ShowLoginContext from "../../context/ShowLoginContext";
-import FirstNameContext from "../../context/FirstNameContext";
-import LastNameContext from "../../context/LastNameContext";
+
 import { POST } from "../../utils/api";
 
 function SignupModal() {
@@ -15,8 +14,8 @@ function SignupModal() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const { firstname, setFirstname } = useState("");
-  const { lastname, setLastname } = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
   const [phonenumber, setPhonenumber] = useState("");
   const navigate = useNavigate();
   const { setShowLogin } = useContext(ShowLoginContext);
