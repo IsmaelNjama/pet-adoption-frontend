@@ -5,6 +5,7 @@ import LogOut from "../../components/LogOut";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import ShowAllUsersContext from "../../context/ShowAllUsersContext";
+import AddPetModal from "../../components/modals/AddPetModal";
 
 function Dashboard() {
   const { showAllUsers, setShowAllUsers } = useContext(ShowAllUsersContext);
@@ -12,6 +13,9 @@ function Dashboard() {
   const handleGetUsersList = () => {
     navigate("/AllUsers");
     setShowAllUsers(true);
+  };
+  const handleAddPet = () => {
+    navigate("/AddPetModal");
   };
   return (
     <div className="dashboard-wrapper">
@@ -24,17 +28,22 @@ function Dashboard() {
           <div className="admin-wrapper">
             <div className="admin-title">Admin</div>
           </div>
-          <div className="all-users-wrapper">
-            <Button variant="primary" onClick={handleGetUsersList}>
+          <div>
+            <Button
+              className="all-users-button"
+              variant="primary"
+              onClick={handleGetUsersList}
+            >
               All Users
             </Button>
           </div>
-          <div className="all-pets-wrapper">
-            <AllPets />
+          <div>
+            <AddPetModal />
           </div>
         </div>
         <div className="users-list">
           <AllUsers />
+          <AllPets />
         </div>
       </div>
     </div>

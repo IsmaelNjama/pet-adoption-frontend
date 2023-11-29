@@ -9,10 +9,10 @@ function AllUsers() {
   const [users, setUsers] = useState([]);
   const { showAllUsers, setShowAllUsers } = useContext(ShowAllUsersContext);
 
-  // useEffect(() => {
-  //   getUsersList();
-  //   setShowAllUsers(false);
-  // }, []);
+  useEffect(() => {
+    getUsersList();
+    // setShowAllUsers(false);
+  }, []);
 
   const getUsersList = async () => {
     try {
@@ -23,7 +23,7 @@ function AllUsers() {
     }
   };
 
-  getUsersList();
+  // getUsersList();
   const handleGetUserDetails = () => {
     alert("clicked");
   };
@@ -31,9 +31,7 @@ function AllUsers() {
   return (
     <div>
       <h2>All Users</h2>
-      <div
-        className={`user-card-list-wrapper ${showAllUsers ? "show-all" : ""}`}
-      >
+      <div className="dashboard-card-list-wrapper">
         {users.map((users) => (
           <Card key={users._id} style={{ width: "18rem" }}>
             <Card.Body>

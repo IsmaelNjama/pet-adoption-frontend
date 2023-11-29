@@ -16,6 +16,7 @@ import Dashboard from "./pages/admin/Dashboard";
 import AdminPage from "./pages/admin/AdminPage";
 import ShowAllUsersContext from "./context/ShowAllUsersContext";
 import AllUsers from "./components/AllUsers";
+import AddPetModal from "./components/modals/AddPetModal";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -45,6 +46,7 @@ function App() {
                   <Route path="/SearchPage" element={<SearchPage />} />
                   <Route path="/AdminPage" element={<AdminPage />} />
                   <Route path="/AllUsers" element={<AllUsers />} />
+                  <Route path="/AddPetModal" element={<AddPetModal />} />
                 </Routes>
               </BrowserRouter>
             </ShowAllUsersContext.Provider>

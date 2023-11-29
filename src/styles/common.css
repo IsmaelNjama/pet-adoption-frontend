@@ -129,7 +129,7 @@ textarea {
   margin-bottom: 10px;
 }
 .pet-image-container {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   height: 200px;
   text-align: center;
 
@@ -166,20 +166,20 @@ textarea {
 
 }
 
-.user-card-list-wrapper {
+.dashboard-card-list-wrapper {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   margin: auto;
   gap:10px;
   height: 380px;
-  overflow: hidden;
+  overflow: scroll;
 }
 
-.user-card-list-wrapper.show-all {
+/* .user-card-list-wrapper.show-all {
   height: auto;
 
-}
+} */
 
 .pet-card {
   border: 1px solid blue;
@@ -259,23 +259,9 @@ textarea {
   width: 100%;
   margin-left: 0;
 }
-.all-users-wrapper {
-  border: 1px solid #3498db;
-  padding: 10px;
-  height: 50px;
-  width: 100%;
-  margin-bottom: 5px;
-}
-.all-pets-wrapper {
-  border: 1px solid #3498db;
-  padding: 10px;
-  height: 50px;
-  width: 100%;
-
-}
 
 .users-list {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 80%;
   height: 425px;
 }
@@ -312,6 +298,21 @@ textarea {
   font-size: 1,2rem;
   color: #555;
   margin-top: 20px;
+}
+
+.search-pets-title {
+  text-align: center;
+  margin-top: 3rem;
+}
+.search-pets-input {
+  width: 50%;
+  margin: auto;
+}
+.search-bar-wrapper {
+  height: 100vh;
+  /* border: 1px solid green; */
+  /* display: flex;
+  flex-direction: column; */
 }
 
 

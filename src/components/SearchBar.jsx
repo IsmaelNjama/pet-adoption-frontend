@@ -1,25 +1,34 @@
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
 import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
+import Button from "react-bootstrap/Button";
+import { petsAdvancedQueryGET } from "../utils/api";
 
 function SearchBar() {
+  const getAdvancedPetsList = async () => {
+    try {
+      const petsList = await petsAdvancedQueryGET(
+        "pets/search/advanced?q=milly"
+      );
+      console.log(
+        "🚀 ~ file: SearchBar.jsx:10 ~ getAdvancedPetsList ~ petsList:",
+        petsList
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  getAdvancedPetsList();
   return (
-    <div>
-      <h3>Search Pets</h3>
-      <InputGroup className="mb-3">
-        <Form.Control aria-label="Text input with dropdown button" />
-
-        <DropdownButton
-          variant="outline-secondary"
-          title="Search"
-          id="input-group-dropdown-2"
-          align="end"
-        >
-          <Dropdown.Item href="#">Basic Search</Dropdown.Item>
-          <Dropdown.Item href="#">Advanced Search</Dropdown.Item>
-        </DropdownButton>
-      </InputGroup>
+    <div className="search-bar-wrapper">
+      <h3 className="search-pets-title">Search Pets</h3>
+      <Form className="d-flex search-pets-input">
+        <Form.Control
+          type="search"
+          placeholder="Search"
+          className="me-2"
+          aria-label="Search"
+        />
+        <Button variant="outline-success">Search</Button>
+      </Form>
     </div>
   );
 }

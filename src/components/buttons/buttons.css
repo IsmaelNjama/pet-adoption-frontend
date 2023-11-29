@@ -1,11 +1,14 @@
-.login-button, .sign-up-button {
+.login-button, .sign-up-button{
   background-color: rgb(0,123,255);
   color: #fff;
   border: none;
   width: 50%;
   border-radius: 4px;
-
-
+}
+.add-pet-button,.all-users-button{
+  border: 1px solid #3498db;
+  margin: 1rem;
+  width: 100%;
 }
 .sign-up-button {
   background-color: #B82937;
