@@ -4,19 +4,15 @@ import SearchButton from "../components/buttons/SearchButton";
 import MyPetsPage from "./MyPetsPage";
 import { Link } from "react-router-dom";
 import ProfileSettingsButton from "../components/buttons/ProfileSettingsButton";
+import NavBar from "../components/Navbar";
 
 function LoggedInPage() {
   return (
     <div className="logged-in-page">
-      <div className="search-profile-wrapper">
-        <SearchButton />
-        <ProfileSettingsButton />
-      </div>
+      <NavBar />
+
       <div>
         <Header />
-        <Link className="my-pets-link" to="/MyPetsPage">
-          <h2>My Pets</h2>
-        </Link>
       </div>
     </div>
   );

@@ -315,6 +315,16 @@ textarea {
   flex-direction: column; */
 }
 
+.search-pets-wrapper {
+  display: flex;
+  /* border: 1px solid red; */
+  width: 80%;
+  margin: auto;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
 
 @media (max-width: 768px) {
   .header-wrapper {

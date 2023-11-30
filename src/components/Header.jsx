@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import FirstNameContext from "../context/FirstNameContext";
 import LastNameContext from "../context/LastNameContext";
 import LoggedInContext from "../context/LoggedInContext";
+import Stack from "react-bootstrap/Stack";
 
 function Header() {
   const { firstname } = useContext(FirstNameContext);
@@ -11,19 +12,19 @@ function Header() {
     <div className="header-wrapper">
       <h1>Pet Adoption Hub</h1>
       {isLoggedIn ? (
-        <section className="welcome-section">
-          <h2>
-            Welcome Back!!! {firstname} {lastname}
-          </h2>
-        </section>
+        <Stack className="welcome-section">
+          Welcome Back!!! {firstname} {lastname}
+        </Stack>
       ) : (
-        <p className="welcome-message">
-          Welcome to the Pet Adoption Hub and discover your perfect companion
-        </p>
+        <Stack className="welcome-message">
+          <p>
+            Welcome to the Pet Adoption Hub and discover your perfect companion
+          </p>
+        </Stack>
       )}
-      <section className="commitment-section">
+      <Stack className="commitment-section">
         We're committed to matching each pet with the right family
-      </section>
+      </Stack>
     </div>
   );
 }
