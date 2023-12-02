@@ -41,7 +41,7 @@ function SearchBar() {
   // getAdvancedPetsList();
   return (
     <div className="search-bar-wrapper">
-      <h3 className="search-pets-title">Search Pets</h3>
+      <h3 className="title-section">Search Pets</h3>
       <Form className="d-flex search-pets-input">
         <Form.Control
           type="search"

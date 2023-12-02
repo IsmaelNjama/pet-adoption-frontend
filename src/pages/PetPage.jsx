@@ -13,7 +13,6 @@ import("../styles/common.css");
 
 function PetPage() {
   const { petDetails } = useContext(PetDetailsContext);
-  console.log(petDetails._id);
 
   return (
     <div className="pet-page-container">
@@ -47,7 +46,7 @@ function PetPage() {
         </Row>
         <Row>
           <Col className="pet-detail-col mb-2" xs={6} md={4}>
-            <p>Adoption Status:{petDetails.adoption_status}</p>
+            <p>Adoption Status:{petDetails.adoptionStatus}</p>
           </Col>
           <Col className="pet-detail-col mb-2" xs={6} md={4}>
             <p>Height:{petDetails.height}</p>

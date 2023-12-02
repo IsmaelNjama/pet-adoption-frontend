@@ -11,7 +11,6 @@ function AllUsers() {
 
   useEffect(() => {
     getUsersList();
-    // setShowAllUsers(false);
   }, []);
 
   const getUsersList = async () => {
@@ -30,7 +29,7 @@ function AllUsers() {
 
   return (
     <div>
-      <h2>All Users</h2>
+      <h2 className="title-section">All Users</h2>
       <div className="dashboard-card-list-wrapper">
         {users.map((users) => (
           <Card key={users._id} style={{ width: "18rem" }}>

@@ -25,7 +25,7 @@ function AllPets() {
   };
   return (
     <div>
-      <h2>All Pets</h2>
+      <h2 className="title-section">All Pets</h2>
       <div className="dashboard-card-list-wrapper">
         {pets.map((pets) => (
           <Card key={pets._id} style={{ width: "18rem" }}>

@@ -1,24 +1,37 @@
 import Form from "react-bootstrap/Form";
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import PetCardList from "../components/PetCardList";
+import AdoptedPetsContext from "../context/AdoptedPetsContext";
+import Card from "react-bootstrap/Card";
+import Loader from "../components/Loader";
+import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
 
 function MyPetsPage() {
-  const [pets, setPets] = useState([]);
-  const [savedPets, setSavedPets] = useState([]);
   const [checked, setChecked] = useState(false);
+  const { adoptedPets, setAdoptedPets } = useContext(AdoptedPetsContext);
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+  console.log(
+    "🚀 ~ file: MyPetsPage.jsx:11 ~ MyPetsPage ~ adoptedPets:",
+    adoptedPets
+  );
+
+  const handleSeeFullDetails = () => {
+    navigate("/PetPage");
+  };
+
+  useEffect(() => {
+    const storedPets = JSON.parse(localStorage.getItem("storedPets"));
+    setAdoptedPets(storedPets);
+  }, []);
 
   const handleCheckedChange = (e) => {
     setChecked(e.target.checked);
   };
   return (
-    <div>
-      {checked ? (
-        <h3>You currently do not own any pets</h3>
-      ) : (
-        <h3>You own the below pets</h3>
-      )}
-
-      <Form.Check onChange={handleCheckedChange} />
+    <div className="pet-card-list-container">
+      <h2 className="owned-pet-title">Pet Owned</h2>
       <PetCardList />
     </div>
   );

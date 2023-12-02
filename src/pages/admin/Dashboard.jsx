@@ -14,9 +14,7 @@ function Dashboard() {
     navigate("/AllUsers");
     setShowAllUsers(true);
   };
-  const handleAddPet = () => {
-    navigate("/AddPetModal");
-  };
+
   return (
     <div className="dashboard-wrapper">
       <div className="logout-wrapper">
