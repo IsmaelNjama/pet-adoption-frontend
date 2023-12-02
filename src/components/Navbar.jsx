@@ -25,11 +25,9 @@ function NavBar() {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="#action2">My Pets</Nav.Link>
+            <Nav.Link href="/MyPetsPage">My Pets</Nav.Link>
 
-            <Nav.Link href="/AdminPage" disabled>
-              Dashboard
-            </Nav.Link>
+            <Nav.Link href="/AdminPage">Dashboard</Nav.Link>
           </Nav>
           <Form className="d-flex gap-3">
             <Button onClick={handleSearch} variant="outline-success">

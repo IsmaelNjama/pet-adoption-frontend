@@ -64,7 +64,29 @@ export const petsAdvancedQueryGET = (url, params = {}) => {
   return new Promise(async (resolve, reject) => {
     try {
       const resp = await petsApi.get(url, { ...getHeaders(), params });
-      console.log("res data", resp.data);
+
+      resolve(resp.data);
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
+export const adoptPetsPOST = (url, body) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const resp = await petsApi.post(url, body, { ...getHeaders() });
+      resolve(resp.data);
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
+export const petsByIdGET = (url, params = {}) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const resp = await petsApi.get(url, { ...getHeaders(), params });
       resolve(resp.data);
     } catch (error) {
       reject(error);

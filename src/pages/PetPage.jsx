@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import AdoptButton from "../components/buttons/AdoptButton";
 import FosterButton from "../components/buttons/FosterButton";
 import SavePetButton from "../components/buttons/SavePetButton";
@@ -7,9 +7,14 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Stack from "react-bootstrap/Stack";
 import Image from "react-bootstrap/Image";
+import PetDetailsContext from "../context/PetDetailsContext";
+
 import("../styles/common.css");
 
 function PetPage() {
+  const { petDetails } = useContext(PetDetailsContext);
+  console.log(petDetails._id);
+
   return (
     <div className="pet-page-container">
       <Container className="pet-image-container">
@@ -20,35 +25,35 @@ function PetPage() {
       <Container className="pet-details-container">
         <Row>
           <Col className="pet-detail-col mb-2" xs={6} md={4}>
-            <p className="pet-type">Type:</p>
+            <p className="pet-type">Type:{petDetails.type}</p>
           </Col>
           <Col className="pet-detail-col mb-2" xs={6} md={4}>
-            <p className="pet-breed">Breed:</p>
+            <p className="pet-breed">Breed:{petDetails.breed}</p>
           </Col>
           <Col className="pet-detail-col mb-2" xs={6} md={4}>
-            <p>Dietary restrictions:</p>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="pet-detail-col mb-2" xs={6} md={4}>
-            <p> Name:</p>
-          </Col>
-          <Col className="pet-detail-col mb-2" xs={6} md={4}>
-            <p>Color:</p>
-          </Col>
-          <Col className="pet-detail-col mb-2" xs={6} md={4}>
-            <p> Weight:</p>
+            <p>Dietary restrictions:{petDetails.dietary_restrictions}</p>
           </Col>
         </Row>
         <Row>
           <Col className="pet-detail-col mb-2" xs={6} md={4}>
-            <p>Adoption Status:</p>
+            <p> Name:{petDetails.name}</p>
           </Col>
           <Col className="pet-detail-col mb-2" xs={6} md={4}>
-            <p>Height:</p>
+            <p>Color:{petDetails.color}</p>
           </Col>
           <Col className="pet-detail-col mb-2" xs={6} md={4}>
-            <p>Hypoallergenic:</p>
+            <p> Weight:{petDetails.weight}</p>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="pet-detail-col mb-2" xs={6} md={4}>
+            <p>Adoption Status:{petDetails.adoption_status}</p>
+          </Col>
+          <Col className="pet-detail-col mb-2" xs={6} md={4}>
+            <p>Height:{petDetails.height}</p>
+          </Col>
+          <Col className="pet-detail-col mb-2" xs={6} md={4}>
+            <p>Hypoallergenic:{petDetails.hypoallergenic}</p>
           </Col>
         </Row>
       </Container>

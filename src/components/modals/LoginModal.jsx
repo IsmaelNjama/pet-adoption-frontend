@@ -39,10 +39,6 @@ function LoginModal() {
         setLastname(loggedUserResponse.data.user.lastname);
         navigate("/LoggedInPage");
         localStorage.setItem("USER", loggedUserResponse.data.token.accessToken);
-        console.log(
-          "🚀 ~ file: LoginModal.jsx:42 ~ handleLoggedIn ~ loggedUserResponse.data.accessToken:",
-          loggedUserResponse.data.token.accessToken
-        );
       }
     } catch (error) {
       setLoginError(error.response.data.message);

@@ -1,18 +1,23 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
-import { petsAdvancedQueryGET } from "../utils/api";
-import { useState } from "react";
+import { petsAdvancedQueryGET, petsByIdGET } from "../utils/api";
+import { useContext, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Loader from "./Loader";
+import PetDetailsContext from "../context/PetDetailsContext";
 
 function SearchBar() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [petList, setPetList] = useState([]);
   const [query, setQuery] = useState([""]);
+  const { setPetDetails } = useContext(PetDetailsContext);
 
-  const handleSeeFullDetails = () => {
+  const handleSeeFullDetails = async (petId) => {
+    console.log(petId);
+    const fullPetDetails = await petsByIdGET(`pets/${petId}`);
+    setPetDetails(fullPetDetails);
     navigate("/PetPage");
   };
 
@@ -25,12 +30,9 @@ function SearchBar() {
       const petsList = await petsAdvancedQueryGET(
         `pets/search/advanced?q=${query}`
       );
-      console.log(
-        "🚀 ~ file: SearchBar.jsx:10 ~ getAdvancedPetsList ~ petsList:",
-        petsList
-      );
+
       setPetList(petsList);
-      console.log("petLiiist", petList);
+
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -56,17 +58,16 @@ function SearchBar() {
         {isLoading ? (
           <Loader />
         ) : (
-          petList.map((petList) => (
-            <Card
-              className="pet-car"
-              key={petList._id}
-              style={{ width: "18rem" }}
-            >
-              <Card.Img variant="top" src={petList.url} />
+          petList.map((pet) => (
+            <Card className="pet-car" key={pet._id} style={{ width: "18rem" }}>
+              <Card.Img variant="top" src={pet.url} />
               <Card.Body>
-                <Card.Title>Name: {petList.name}</Card.Title>
-                <Card.Text>Status: {petList.adoption_status}</Card.Text>
-                <Button variant="primary" onClick={handleSeeFullDetails}>
+                <Card.Title>Name: {pet.name}</Card.Title>
+                <Card.Text>Status: {pet.adoptionStatus}</Card.Text>
+                <Button
+                  variant="primary"
+                  onClick={() => handleSeeFullDetails(pet._id)}
+                >
                   See more...
                 </Button>
               </Card.Body>
