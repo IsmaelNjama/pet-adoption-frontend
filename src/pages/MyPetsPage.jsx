@@ -9,22 +9,13 @@ import { useNavigate } from "react-router-dom";
 
 function MyPetsPage() {
   const [checked, setChecked] = useState(false);
-  const { adoptedPets, setAdoptedPets } = useContext(AdoptedPetsContext);
+  // const { adoptedPets, setAdoptedPets } = useContext(AdoptedPetsContext);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  console.log(
-    "🚀 ~ file: MyPetsPage.jsx:11 ~ MyPetsPage ~ adoptedPets:",
-    adoptedPets
-  );
 
   const handleSeeFullDetails = () => {
     navigate("/PetPage");
   };
-
-  useEffect(() => {
-    const storedPets = JSON.parse(localStorage.getItem("storedPets"));
-    setAdoptedPets(storedPets);
-  }, []);
 
   const handleCheckedChange = (e) => {
     setChecked(e.target.checked);
