@@ -85,9 +85,9 @@
 
 
 .profile-form-wrapper {
-  margin:auto;
-  margin-top: 70px;
-  height: 600px;
+  width: 100%;
+  margin-top: 1rem;
+  height: 100vh;
   padding: 20px;
   background: linear-gradient(to bottom,#f9f9f9, #e0e0e0);
   border-radius: 10px;
@@ -162,8 +162,12 @@ textarea {
   flex-wrap: wrap;
   width: 100%;
   margin: auto;
-  gap:10px;
+  gap:1rem;
 
+}
+
+.pet-card-container {
+  height: 100vh;
 }
 
 .pet-list-container {
@@ -202,7 +206,6 @@ textarea {
 } */
 
 .pet-card {
-  border: 1px solid blue;
   padding: 10px;
 }
 
@@ -294,8 +297,8 @@ textarea {
 
 }
 
-.search {
-  border:1px solid #ccc;
+.basic-search {
+
   border-radius: 5px;
   padding: 10px;
   
@@ -345,6 +348,39 @@ textarea {
   gap: 1rem;
   margin-top: 2rem;
   flex-wrap: wrap;
+}
+
+.login-to-search {
+  text-align: center;
+  color: greenyellow;
+}
+
+.owned-pet-wrapper {
+  height: 100vh;
+  width: 80%;
+  margin: auto;
+}
+
+.nav-title {
+  font-family: 'Silkscreen', sans-serif;
+  font-weight: bolder;
+  color: magenta;
+  font-size: x-large;
+}
+
+.nav-my-pets {
+  font-family: 'Rubik Moonrocks', sans-serif;
+  font-weight: bolder;
+  color: goldenrod;
+  font-size: x-large;
+
+}
+
+.nav-dashboard {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bolder;
+  color: rgb(153, 255, 0);
+  font-size: x-large;
 }
 
 

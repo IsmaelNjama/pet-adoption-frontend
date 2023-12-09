@@ -6,23 +6,56 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useNavigate } from "react-router-dom";
 import FirstNameContext from "../context/FirstNameContext";
+import { GET } from "../utils/api";
+import LoggedInContext from "../context/LoggedInContext";
+import { LuLogOut } from "react-icons/lu";
+import { FaSearch } from "react-icons/fa";
+import { CgProfile } from "react-icons/cg";
+import UserProfileContext from "../context/UserProfileContext";
 
 function NavBar() {
   const [isdisabled, setIsdisabled] = useState(false);
   const { firstname } = useContext(FirstNameContext);
+  const { isLoggedIn, setIsLoggedIn } = useContext(LoggedInContext);
+  const { setProfileDetails } = useContext(UserProfileContext);
   const navigate = useNavigate();
 
-  const handleProfileNavigation = () => {
-    navigate("/ProfileSettingsForm");
-  };
+  const userId = `${localStorage.getItem("USER_ID")}`;
 
   useEffect(() => {
     setIsdisabled(firstname !== "admin");
   }, [firstname]);
 
+  useEffect(() => {
+    const storedLoggedInState = localStorage.getItem("isLoggedIn");
+    if (storedLoggedInState) {
+      setIsLoggedIn(JSON.parse(storedLoggedInState));
+    }
+  }, [setIsLoggedIn]);
+
+  const handleProfileNavigation = async () => {
+    try {
+      const userProfile = await GET(`/users/${userId}`);
+      setProfileDetails(userProfile);
+    } catch (error) {
+      console.error(error);
+    }
+    navigate("/ProfileSettingsForm");
+  };
+
   const handleSearch = () => {
     navigate("/SearchPage");
   };
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/");
+  };
+
+  useEffect(() => {
+    localStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
+  }, [isLoggedIn]);
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
@@ -33,22 +66,53 @@ function NavBar() {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="/MyPetsPage">My Pets</Nav.Link>
-            <Nav.Link href="/AdminPage" disabled={isdisabled}>
-              Dashboard
-            </Nav.Link>
+            {isLoggedIn ? (
+              <Nav.Link href="/LoggedInPage" className="nav-title">
+                Pet Adoption Hub
+              </Nav.Link>
+            ) : (
+              <Nav.Link href="/" className="nav-title">
+                Pet Adoption Hub
+              </Nav.Link>
+            )}
+            {isLoggedIn && (
+              <Nav.Link href="/MyPetsPage" className="nav-my-pets">
+                My Pets
+              </Nav.Link>
+            )}
+            {!isdisabled && isLoggedIn && (
+              <Nav.Link href="/AdminPage" className="nav-dashboard">
+                Dashboard
+              </Nav.Link>
+            )}
           </Nav>
           <Form className="d-flex gap-3">
-            <Button onClick={handleSearch} variant="outline-success">
-              Search
-            </Button>
             <Button
-              onClick={handleProfileNavigation}
-              variant="outline-success  rounded-circle"
+              onClick={handleSearch}
+              variant="outline-success"
+              className="border-0"
             >
-              P
+              <FaSearch />
             </Button>
+            {isLoggedIn && (
+              <Button
+                onClick={handleProfileNavigation}
+                variant="outline-success  rounded-circle"
+                className="m-2 border-0"
+              >
+                <CgProfile />
+              </Button>
+            )}
           </Form>
+          {isLoggedIn && (
+            <Button
+              onClick={handleLogout}
+              variant="outline-success"
+              className="border-0"
+            >
+              <LuLogOut />
+            </Button>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>

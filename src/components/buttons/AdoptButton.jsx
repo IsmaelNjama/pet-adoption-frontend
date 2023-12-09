@@ -1,42 +1,44 @@
 import React, { useContext, useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import PetDetailsContext from "../../context/PetDetailsContext";
-import { adoptPetsPOST } from "../../utils/api";
+import { GET, PUT, adoptPetsPOST, petsUpdatePUT } from "../../utils/api";
 import AdoptedPetsContext from "../../context/AdoptedPetsContext";
+import OwnedPetsContext from "../../context/OwnedPetsContext";
 
 function AdoptButton() {
   const { petDetails } = useContext(PetDetailsContext);
   const { adoptedPets, setAdoptedPets } = useContext(AdoptedPetsContext);
-  console.log(
-    "🚀 ~ file: AdoptButton.jsx:9 ~ AdoptButton ~ adoptedPets:",
-    adoptedPets
-  );
+  const [petsAdopted, setPetsAdopted] = useState([]);
+  const { ownedPetsList, setOwnedPetsList } = useContext(OwnedPetsContext);
+
+  const userId = `${localStorage.getItem("USER_ID")}`;
 
   useEffect(() => {
-    const storedPets = JSON.parse(localStorage.getItem("storedPets"));
-    setAdoptedPets(storedPets);
+    fetchAdoptedPet();
   }, []);
+
+  const fetchAdoptedPet = async () => {
+    const userWithAdoptPets = await GET(`/users/${userId}`);
+
+    setPetsAdopted(userWithAdoptPets?.pets || []);
+  };
 
   const handleAdoptPets = async () => {
     const body = { adoptionStatus: petDetails.adoptionStatus };
 
-    console.log(
-      "🚀 ~ file: AdoptButton.jsx:23 ~ handleAdoptPets ~ body:",
-      body
-    );
-
-    let pets = [...adoptedPets];
-
     try {
       const pet = await adoptPetsPOST(`pets/adopt/${petDetails._id}`, body);
 
-      console.log(
-        "🚀 ~ file: AdoptButton.jsx:33 ~ handleAdoptPets ~ pet:",
-        pet
-      );
-      pets.push(pet);
-      setAdoptedPets(pets);
-      localStorage.setItem("storedPets", JSON.stringify(adoptedPets));
+      const updatedPetsAdopted = [...petsAdopted, pet];
+      setPetsAdopted(updatedPetsAdopted);
+
+      const pets = { pets: [...updatedPetsAdopted] };
+
+      const updateUserPets = await PUT(`/users/${userId}`, pets);
+
+      const updatedPet = { adoptionStatus: "adopted" };
+
+      const newAdd = await petsUpdatePUT(`/pets/${petDetails._id}`, updatedPet);
     } catch (error) {
       console.error(error);
     }

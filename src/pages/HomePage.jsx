@@ -12,9 +12,6 @@ function HomePage() {
       <div className="homepage-inner-wrapper">
         <div className="header-search-wrapper">
           <Header />
-          <div>
-            <Search />
-          </div>
         </div>
         <div className="login-signup-wrapper">
           <span>Have an account already?</span>

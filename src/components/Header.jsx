@@ -10,7 +10,6 @@ function Header() {
   const { isLoggedIn } = useContext(LoggedInContext);
   return (
     <div className="header-wrapper">
-      <h1>Pet Adoption Hub</h1>
       {isLoggedIn ? (
         <Stack className="welcome-section">
           Welcome Back!!! {firstname} {lastname}

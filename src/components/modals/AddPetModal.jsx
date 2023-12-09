@@ -3,12 +3,13 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { petsPOST } from "../../utils/api";
+import ImageUpload from "../ImageUpload";
 
 function AddPetModal() {
   const [show, setShow] = useState(false);
   const [type, setType] = useState("");
   const [name, setName] = useState("");
-  const [adoptionStatus, setAdoptionStatus] = useState("available");
+  const [adoptionStatus, setAdoptionStatus] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
   const [color, setColor] = useState("");
@@ -201,7 +202,7 @@ function AddPetModal() {
               <Form.Control
                 type="text"
                 placeholder="breed"
-                value={color}
+                value={breed}
                 onChange={handleChangeBreed}
                 autoFocus
                 required
@@ -209,6 +210,7 @@ function AddPetModal() {
             </Form.Group>
           </Form>
         </Modal.Body>
+        <ImageUpload />
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close

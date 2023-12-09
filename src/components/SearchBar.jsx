@@ -1,18 +1,25 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
-import { petsAdvancedQueryGET, petsByIdGET } from "../utils/api";
-import { useContext, useState } from "react";
+import {
+  petsAdvancedQueryGET,
+  petsBasicQueryGET,
+  petsByIdGET,
+} from "../utils/api";
+import { useContext, useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
 import Loader from "./Loader";
 import PetDetailsContext from "../context/PetDetailsContext";
+import LoggedInContext from "../context/LoggedInContext";
 
 function SearchBar() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [petList, setPetList] = useState([]);
-  const [query, setQuery] = useState([""]);
+  const [query, setQuery] = useState("");
   const { setPetDetails } = useContext(PetDetailsContext);
+  const { isLoggedIn } = useContext(LoggedInContext);
+  const [showLoginMessage, setShowLoginMessage] = useState(false);
 
   const handleSeeFullDetails = async (petId) => {
     console.log(petId);
@@ -21,24 +28,48 @@ function SearchBar() {
     navigate("/PetPage");
   };
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      getAdvancedPetsList();
+    } else {
+      getBasicPetsList();
+    }
+  }, [isLoggedIn]);
+
   const handleQueryChange = (e) => {
     setQuery(e.target.value);
   };
-  const getAdvancedPetsList = async () => {
+
+  const getBasicPetsList = async () => {
     try {
       setIsLoading(true);
-      const petsList = await petsAdvancedQueryGET(
-        `pets/search/advanced?q=${query}`
-      );
 
-      setPetList(petsList);
+      setPetList(await petsBasicQueryGET("pets/search/basic"));
 
       setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
   };
-  // getAdvancedPetsList();
+
+  const getAdvancedPetsList = async () => {
+    try {
+      setIsLoading(true);
+
+      setPetList(await petsAdvancedQueryGET(`pets/search/advanced?q=${query}`));
+
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleSearchButtonClick = () => {
+    if (isLoggedIn) {
+      getAdvancedPetsList();
+    } else {
+      setShowLoginMessage(true);
+    }
+  };
   return (
     <div className="search-bar-wrapper">
       <h3 className="title-section">Search Pets</h3>
@@ -50,10 +81,15 @@ function SearchBar() {
           aria-label="Search"
           onChange={handleQueryChange}
         />
-        <Button onClick={getAdvancedPetsList} variant="outline-success">
+        <Button onClick={handleSearchButtonClick} variant="outline-success">
           Search
         </Button>
       </Form>
+      {!isLoggedIn && showLoginMessage && (
+        <p className="login-to-search">
+          Please Login or Signup to find your match
+        </p>
+      )}
       <div className="search-pets-wrapper">
         {isLoading ? (
           <Loader />
@@ -64,12 +100,14 @@ function SearchBar() {
               <Card.Body>
                 <Card.Title>Name: {pet.name}</Card.Title>
                 <Card.Text>Status: {pet.adoptionStatus}</Card.Text>
-                <Button
-                  variant="primary"
-                  onClick={() => handleSeeFullDetails(pet._id)}
-                >
-                  See more...
-                </Button>
+                {isLoggedIn && (
+                  <Button
+                    variant="primary"
+                    onClick={() => handleSeeFullDetails(pet._id)}
+                  >
+                    See more...
+                  </Button>
+                )}
               </Card.Body>
             </Card>
           ))

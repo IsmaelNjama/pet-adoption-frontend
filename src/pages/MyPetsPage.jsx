@@ -1,20 +1,25 @@
-import Form from "react-bootstrap/Form";
 import React, { useContext, useState, useEffect } from "react";
 import PetCardList from "../components/PetCardList";
-import AdoptedPetsContext from "../context/AdoptedPetsContext";
-import Card from "react-bootstrap/Card";
-import Loader from "../components/Loader";
-import Button from "react-bootstrap/Button";
-import { useNavigate } from "react-router-dom";
+
+import { GET } from "../utils/api";
 
 function MyPetsPage() {
   const [checked, setChecked] = useState(false);
-  // const { adoptedPets, setAdoptedPets } = useContext(AdoptedPetsContext);
-  const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
+  const [pets, setPets] = useState([]);
 
-  const handleSeeFullDetails = () => {
-    navigate("/PetPage");
+  const userId = `${localStorage.getItem("USER_ID")}`;
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+  const fetchData = async () => {
+    try {
+      const userWithPets = await GET(`/users/${userId}`);
+
+      setPets(userWithPets.pets);
+    } catch (error) {
+      console.error("Error", error);
+    }
   };
 
   const handleCheckedChange = (e) => {
@@ -22,8 +27,11 @@ function MyPetsPage() {
   };
   return (
     <div className="pet-card-list-container">
-      <h2 className="owned-pet-title">Pet Owned</h2>
-      <PetCardList />
+      {pets.length > 0 ? (
+        <PetCardList />
+      ) : (
+        <h2>You currently do not owned Pets</h2>
+      )}
     </div>
   );
 }

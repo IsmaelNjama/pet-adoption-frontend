@@ -32,7 +32,11 @@ function LoginModal() {
 
     try {
       const loggedUserResponse = await POST("/auth/login", body);
-
+      console.log(
+        "🚀 ~ file: LoginModal.jsx:35 ~ handleLoggedIn ~ loggedUserResponse:",
+        loggedUserResponse.data.user.pets
+      );
+      localStorage.setItem("USER_ID", loggedUserResponse.data.user._id);
       if (loggedUserResponse.status === 200) {
         setShowLogin(false);
         setFirstname(loggedUserResponse.data.user.firstname);
