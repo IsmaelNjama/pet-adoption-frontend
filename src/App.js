@@ -23,6 +23,7 @@ import NavBar from "./components/Navbar";
 import OwnedPetsContext from "./context/OwnedPetsContext";
 import OwnedPetPage from "./pages/OwnedPetPage";
 import UserProfileContext from "./context/UserProfileContext";
+import UploadImageContext from "./context/UploadImageContext";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -35,6 +36,7 @@ function App() {
   const [adoptedPets, setAdoptedPets] = useState([]);
   const [ownedPetsList, setOwnedPetsList] = useState([]);
   const [profileDetails, setProfileDetails] = useState([]);
+  const [imageUrl, setImageUrl] = useState("");
   return (
     <ShowLoginContext.Provider value={{ showLogin, setShowLogin }}>
       <FirstNameContext.Provider value={{ firstname, setFirstname }}>
@@ -53,33 +55,43 @@ function App() {
                     <UserProfileContext.Provider
                       value={{ profileDetails, setProfileDetails }}
                     >
-                      <BrowserRouter>
-                        <NavBar />
-                        <Routes>
-                          <Route path="/" element={<HomePage />} />
-                          <Route
-                            path="/LoggedInPage"
-                            element={<LoggedInPage />}
-                          />
-                          <Route
-                            path="/ProfileSettingsForm"
-                            element={<ProfileSettingsForm />}
-                          />
-                          <Route path="/MyPetsPage" element={<MyPetsPage />} />
-                          <Route path="/PetPage" element={<PetPage />} />
-                          <Route path="/SearchPage" element={<SearchPage />} />
-                          <Route path="/AdminPage" element={<AdminPage />} />
-                          <Route path="/AllUsers" element={<AllUsers />} />
-                          <Route
-                            path="/AddPetModal"
-                            element={<AddPetModal />}
-                          />
-                          <Route
-                            path="/OwnedPetPage"
-                            element={<OwnedPetPage />}
-                          />
-                        </Routes>
-                      </BrowserRouter>
+                      <UploadImageContext.Provider
+                        value={{ imageUrl, setImageUrl }}
+                      >
+                        <BrowserRouter>
+                          <NavBar />
+                          <Routes>
+                            <Route path="/" element={<HomePage />} />
+                            <Route
+                              path="/LoggedInPage"
+                              element={<LoggedInPage />}
+                            />
+                            <Route
+                              path="/ProfileSettingsForm"
+                              element={<ProfileSettingsForm />}
+                            />
+                            <Route
+                              path="/MyPetsPage"
+                              element={<MyPetsPage />}
+                            />
+                            <Route path="/PetPage" element={<PetPage />} />
+                            <Route
+                              path="/SearchPage"
+                              element={<SearchPage />}
+                            />
+                            <Route path="/AdminPage" element={<AdminPage />} />
+                            <Route path="/AllUsers" element={<AllUsers />} />
+                            <Route
+                              path="/AddPetModal"
+                              element={<AddPetModal />}
+                            />
+                            <Route
+                              path="/OwnedPetPage"
+                              element={<OwnedPetPage />}
+                            />
+                          </Routes>
+                        </BrowserRouter>
+                      </UploadImageContext.Provider>
                     </UserProfileContext.Provider>
                   </OwnedPetsContext.Provider>
                 </AdoptedPetsContext.Provider>

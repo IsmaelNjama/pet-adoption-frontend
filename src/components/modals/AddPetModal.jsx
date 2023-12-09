@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { petsPOST } from "../../utils/api";
 import ImageUpload from "../ImageUpload";
+import UploadImageContext from "../../context/UploadImageContext";
 
 function AddPetModal() {
   const [show, setShow] = useState(false);
@@ -17,6 +18,7 @@ function AddPetModal() {
   const [hypoallergenic, setHypoallergenic] = useState("");
   const [dietaryRestrictions, setDietaryRestrictions] = useState("");
   const [breed, setBreed] = useState("");
+  const { imageUrl } = useContext(UploadImageContext);
 
   const handleChangeType = (e) => {
     setType(e.target.value);
@@ -68,6 +70,7 @@ function AddPetModal() {
         hypoallergenic: hypoallergenic,
         dietaryRestrictions: dietaryRestrictions,
         breed: breed,
+        imageUrl: imageUrl,
       };
 
       await petsPOST("/pets", body);

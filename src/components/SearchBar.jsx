@@ -96,7 +96,7 @@ function SearchBar() {
         ) : (
           petList.map((pet) => (
             <Card className="pet-car" key={pet._id} style={{ width: "18rem" }}>
-              <Card.Img variant="top" src={pet.url} />
+              <Card.Img variant="top" src={pet.imageUrl} />
               <Card.Body>
                 <Card.Title>Name: {pet.name}</Card.Title>
                 <Card.Text>Status: {pet.adoptionStatus}</Card.Text>

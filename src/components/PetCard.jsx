@@ -50,7 +50,7 @@ function PetCard() {
         ) : (
           pets.map((pet) => (
             <Card className="pet-card" key={pet._id} style={{ width: "18rem" }}>
-              <Card.Img variant="top" src={pet.url} />
+              <Card.Img variant="top" src={pet.imageUrl} />
               <Card.Body>
                 <Card.Title>{pet.name}</Card.Title>
                 <Card.Text>Current status: {pet.adoptionStatus}</Card.Text>

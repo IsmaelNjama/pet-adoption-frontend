@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import axios from "axios";
 import { useState } from "react";
+import UploadImageContext from "../context/UploadImageContext";
 
 function ImageUpload() {
   const [file, setFile] = useState(null);
+  const { setImageUrl } = useContext(UploadImageContext);
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
@@ -25,6 +27,7 @@ function ImageUpload() {
       );
 
       console.log("Image uploaded successfully:", response.data);
+      setImageUrl(response.data);
     } catch (error) {
       console.error("Error uploading image:", error);
     }

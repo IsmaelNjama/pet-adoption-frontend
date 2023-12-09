@@ -14,12 +14,18 @@ import("../styles/common.css");
 
 function PetPage() {
   const { petDetails } = useContext(PetDetailsContext);
+  console.log("🚀 ~ file: PetPage.jsx:17 ~ PetPage ~  petDetails:", petDetails);
 
   return (
     <div className="pet-page-container">
-      <Container className="pet-image-container">
+      <Container className="pet-image-container d-flex justify-content-center align-items-center">
         <Col className="pet-image-col" xs={6} md={4}>
-          <Image className="pet-image" src="" roundedCircle />
+          <Image
+            className="pet-image"
+            src={petDetails.imageUrl}
+            roundedCircle
+            style={{ width: "200px", height: "200px" }}
+          />
         </Col>
       </Container>
       <Container className="pet-details-container">
