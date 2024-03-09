@@ -21,7 +21,7 @@ function LoginModal() {
 
   const navigate = useNavigate();
   const { showLogin, setShowLogin } = useContext(ShowLoginContext);
-  const { isloggedIn, setIsLoggedIn } = useContext(LoggedInContext);
+  const { isLoggedIn, setIsLoggedIn, setUserId } = useContext(LoggedInContext);
 
   const handleLoggedIn = async () => {
     setIsLoggedIn(true);
@@ -32,11 +32,9 @@ function LoginModal() {
 
     try {
       const loggedUserResponse = await POST("/auth/login", body);
-      console.log(
-        "🚀 ~ file: LoginModal.jsx:35 ~ handleLoggedIn ~ loggedUserResponse:",
-        loggedUserResponse.data.user.pets
-      );
+
       localStorage.setItem("USER_ID", loggedUserResponse.data.user._id);
+      setUserId(loggedUserResponse.data.user._id);
       if (loggedUserResponse.status === 200) {
         setShowLogin(false);
         setFirstname(loggedUserResponse.data.user.firstname);

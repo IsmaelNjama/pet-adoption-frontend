@@ -69,7 +69,7 @@ function SignupModal() {
         phonenumber: phonenumber,
       };
       const signedAccount = await POST("/auth/signup", body);
-      console.log(signedAccount.status);
+
       if (signedAccount.status === 200) {
         navigate("/");
         setShowSignUp(false);

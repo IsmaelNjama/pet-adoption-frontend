@@ -18,7 +18,6 @@ function PetReturnButton() {
       const userWithOwnedPets = await GET(`/users/${userId}`);
 
       setGetOwnedPets(userWithOwnedPets?.pets || []);
-      console.log("petID", petDetails._id);
     } catch (error) {
       console.error(error);
     }
@@ -52,7 +51,6 @@ function PetReturnButton() {
     } catch (error) {
       console.error(error);
     }
-    console.log(getOwnedPets);
   };
   return (
     <div>

@@ -22,7 +22,6 @@ function SearchBar() {
   const [showLoginMessage, setShowLoginMessage] = useState(false);
 
   const handleSeeFullDetails = async (petId) => {
-    console.log(petId);
     const fullPetDetails = await petsByIdGET(`pets/${petId}`);
     setPetDetails(fullPetDetails);
     navigate("/PetPage");
@@ -48,7 +47,7 @@ function SearchBar() {
 
       setIsLoading(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -60,7 +59,7 @@ function SearchBar() {
 
       setIsLoading(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   const handleSearchButtonClick = () => {
@@ -96,7 +95,11 @@ function SearchBar() {
         ) : (
           petList.map((pet) => (
             <Card className="pet-car" key={pet._id} style={{ width: "18rem" }}>
-              <Card.Img variant="top" src={pet.imageUrl} />
+              <Card.Img
+                variant="top"
+                src={pet.imageUrl}
+                style={{ width: "18rem", height: "200px" }}
+              />
               <Card.Body>
                 <Card.Title>Name: {pet.name}</Card.Title>
                 <Card.Text>Status: {pet.adoptionStatus}</Card.Text>

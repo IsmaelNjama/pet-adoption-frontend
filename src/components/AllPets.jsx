@@ -13,11 +13,10 @@ function AllPets() {
   const getAllPets = async () => {
     try {
       const pets = await petsGET("/pets");
-      console.log("🚀 ~ file: AllPets.jsx:10 ~ getAllPets ~ pets:", pets);
 
       setPets(pets);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   const handleEditPet = () => {

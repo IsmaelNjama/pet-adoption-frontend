@@ -37,11 +37,14 @@ function App() {
   const [ownedPetsList, setOwnedPetsList] = useState([]);
   const [profileDetails, setProfileDetails] = useState([]);
   const [imageUrl, setImageUrl] = useState("");
+  const [userId, setUserId] = useState(localStorage.getItem("USER_ID"));
   return (
     <ShowLoginContext.Provider value={{ showLogin, setShowLogin }}>
       <FirstNameContext.Provider value={{ firstname, setFirstname }}>
         <LastNameContext.Provider value={{ lastname, setLastname }}>
-          <LoggedInContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+          <LoggedInContext.Provider
+            value={{ isLoggedIn, setIsLoggedIn, userId, setUserId }}
+          >
             <ShowAllUsersContext.Provider
               value={{ showAllUsers, setShowAllUsers }}
             >

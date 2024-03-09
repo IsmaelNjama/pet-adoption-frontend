@@ -14,7 +14,6 @@ import("../styles/common.css");
 
 function PetPage() {
   const { petDetails } = useContext(PetDetailsContext);
-  console.log("🚀 ~ file: PetPage.jsx:17 ~ PetPage ~  petDetails:", petDetails);
 
   return (
     <div className="pet-page-container">
@@ -24,7 +23,7 @@ function PetPage() {
             className="pet-image"
             src={petDetails.imageUrl}
             roundedCircle
-            style={{ width: "200px", height: "200px" }}
+            style={{ width: "18rem", height: "200px" }}
           />
         </Col>
       </Container>

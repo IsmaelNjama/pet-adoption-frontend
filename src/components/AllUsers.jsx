@@ -18,7 +18,7 @@ function AllUsers() {
       const users = await GET("/users");
       setUsers(users);
     } catch (error) {
-      console.log("🚀 ~ file: AllUsers.jsx:12 ~ getUsersList ~ error:", error);
+      console.error(error);
     }
   };
 

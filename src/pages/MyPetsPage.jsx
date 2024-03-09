@@ -30,7 +30,9 @@ function MyPetsPage() {
       {pets.length > 0 ? (
         <PetCardList />
       ) : (
-        <h2>You currently do not owned Pets</h2>
+        <h2 className="no-pets-heading text-danger">
+          You currently do not owned Pets
+        </h2>
       )}
     </div>
   );

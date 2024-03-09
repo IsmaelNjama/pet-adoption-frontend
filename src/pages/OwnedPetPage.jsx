@@ -14,29 +14,21 @@ function OwnedPetPage() {
   useEffect(() => {
     getOwnedPetDetails();
   }, []);
-  console.log(
-    "🚀 ~ file: OwnedPetPage.jsx:9 ~ OwnedPetPage ~ petDetails:",
-    petDetails
-  );
-
-  console.log(
-    "🚀 ~ file: OwnedPetPage.jsx:6 ~ OwnedPetPage ~  ownedPetsList:",
-    ownedPetsList
-  );
 
   const getOwnedPetDetails = async () => {
     const pet = await GET(`/pets/${petDetails._id}`);
 
-    console.log(
-      "🚀 ~ file: OwnedPetPage.jsx:23 ~ getOwnedPetDetails ~ pet:",
-      pet
-    );
     setOwnedPet(pet);
   };
 
   return (
     <div className="owned-pet-wrapper">
       <Card>
+        <Card.Img
+          variant="top"
+          src={ownedPet.imageUrl}
+          style={{ width: "18rem", height: "200px" }}
+        />
         <Card.Header>Hi, my name is {ownedPet.name}</Card.Header>
         <Card.Body>
           <Card.Title>

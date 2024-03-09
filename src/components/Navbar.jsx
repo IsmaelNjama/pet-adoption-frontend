@@ -16,12 +16,10 @@ import UserProfileContext from "../context/UserProfileContext";
 function NavBar() {
   const [isdisabled, setIsdisabled] = useState(false);
   const { firstname } = useContext(FirstNameContext);
-  const { isLoggedIn, setIsLoggedIn } = useContext(LoggedInContext);
+  const { isLoggedIn, setIsLoggedIn, userId, setUserId } =
+    useContext(LoggedInContext);
   const { setProfileDetails } = useContext(UserProfileContext);
   const navigate = useNavigate();
-
-  const userId = `${localStorage.getItem("USER_ID")}`;
-
   useEffect(() => {
     setIsdisabled(firstname !== "admin");
   }, [firstname]);
@@ -49,6 +47,8 @@ function NavBar() {
 
   const handleLogout = () => {
     localStorage.clear();
+    setIsLoggedIn(false);
+    setUserId(null);
     navigate("/");
   };
 
@@ -110,7 +110,7 @@ function NavBar() {
               variant="outline-success"
               className="border-0"
             >
-              <LuLogOut />
+              Logout <LuLogOut />
             </Button>
           )}
         </Navbar.Collapse>

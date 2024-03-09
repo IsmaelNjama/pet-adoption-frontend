@@ -19,7 +19,6 @@ function Dashboard() {
     <div className="dashboard-wrapper">
       <div className="logout-wrapper">
         <div className="title">Pet Adoption Hub</div>
-        <LogOut />
       </div>
       <div className="dashboard-content">
         <div className="dashboard-sidebar">

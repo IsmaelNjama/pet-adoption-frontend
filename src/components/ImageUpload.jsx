@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import axios from "axios";
 import { useState } from "react";
 import UploadImageContext from "../context/UploadImageContext";
+import Button from "react-bootstrap/Button";
 
 function ImageUpload() {
   const [file, setFile] = useState(null);
@@ -26,7 +27,12 @@ function ImageUpload() {
         }
       );
 
-      console.log("Image uploaded successfully:", response.data);
+      if (response.status === 200) {
+        alert("Upload successful");
+      } else {
+        alert("Upload failed");
+      }
+
       setImageUrl(response.data);
     } catch (error) {
       console.error("Error uploading image:", error);
@@ -37,7 +43,9 @@ function ImageUpload() {
     <div>
       {" "}
       <input type="file" onChange={handleFileChange} />
-      <button onClick={handleUpload}>Upload</button>
+      <Button variant="primary" onClick={handleUpload}>
+        Upload
+      </Button>
     </div>
   );
 }
