@@ -26,14 +26,14 @@ function ImageUpload() {
           },
         }
       );
-
+      console.log("resp", response);
       if (response.status === 200) {
         alert("Upload successful");
       } else {
         alert("Upload failed");
       }
 
-      setImageUrl(response.data);
+      setImageUrl(response.data.imageURL);
     } catch (error) {
       console.error("Error uploading image:", error);
     }
