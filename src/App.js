@@ -24,6 +24,7 @@ import OwnedPetsContext from "./context/OwnedPetsContext";
 import OwnedPetPage from "./pages/OwnedPetPage";
 import UserProfileContext from "./context/UserProfileContext";
 import UploadImageContext from "./context/UploadImageContext";
+import LoginModal from "./components/modals/LoginModal";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -91,6 +92,10 @@ function App() {
                             <Route
                               path="/OwnedPetPage"
                               element={<OwnedPetPage />}
+                            />
+                            <Route
+                              path="/LoginModal"
+                              element={<LoginModal />}
                             />
                           </Routes>
                         </BrowserRouter>

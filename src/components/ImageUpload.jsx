@@ -18,7 +18,7 @@ function ImageUpload() {
       formData.append("image", file);
 
       const response = await axios.post(
-        "http://localhost:5000/uploads",
+        "http://34.227.106.162:5000/uploads",
         formData,
         {
           headers: {

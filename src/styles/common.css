@@ -384,6 +384,11 @@ textarea {
   font-size: x-large;
 }
 
+.nav-container {
+  /* border: 1px solid red; */
+  width: 80%;
+}
+
 
 @media (max-width: 768px) {
   .header-wrapper {

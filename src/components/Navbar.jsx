@@ -12,6 +12,9 @@ import { LuLogOut } from "react-icons/lu";
 import { FaSearch } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import UserProfileContext from "../context/UserProfileContext";
+import "../styles/common.css";
+import LoginModal from "./modals/LoginModal";
+import SignupModal from "./modals/SignupModal";
 
 function NavBar() {
   const [isdisabled, setIsdisabled] = useState(false);
@@ -58,7 +61,7 @@ function NavBar() {
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
-      <Container fluid>
+      <Container fluid className="nav-container">
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -86,6 +89,10 @@ function NavBar() {
               </Nav.Link>
             )}
           </Nav>
+
+          <LoginModal />
+          <SignupModal />
+
           <Form className="d-flex gap-3">
             <Button
               onClick={handleSearch}
