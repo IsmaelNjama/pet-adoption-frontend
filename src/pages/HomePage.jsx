@@ -1,16 +1,17 @@
 import React from "react";
 import Header from "../components/Header";
 import "../styles/common.css";
+import About from "../components/About";
 
 function HomePage() {
   return (
-    <div className="homepage-outer-wrapper">
-      <div className="homepage-inner-wrapper">
-        <div className="header-search-wrapper">
+    <div className="main-container">
+      <div className="homepage-outer-wrapper">
+        <div className="homepage-inner-wrapper">
           <Header />
         </div>
-        <div className="login-signup-wrapper"></div>
       </div>
+      <About />
     </div>
   );
 }

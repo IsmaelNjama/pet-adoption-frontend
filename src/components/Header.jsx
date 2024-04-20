@@ -3,6 +3,7 @@ import FirstNameContext from "../context/FirstNameContext";
 import LastNameContext from "../context/LastNameContext";
 import LoggedInContext from "../context/LoggedInContext";
 import Stack from "react-bootstrap/Stack";
+import "../styles/common.css";
 
 function Header() {
   const { firstname } = useContext(FirstNameContext);

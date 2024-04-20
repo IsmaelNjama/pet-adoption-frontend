@@ -3,13 +3,19 @@
   font-family: sans-serif;
 }
 
-
+.main-container {
+  height: 100vh;
+}
 
 .homepage-outer-wrapper {
   width: 100%;
   background-color: #f0f0f0;
   padding: 50px;
-  height: 100vh;
+  height: 80%;
+  background-image: url("https://people.com/thmb/TqRgcEn65STk2WOu3f4ZWf5vBPU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(959x584:961x586)/dog-e10b5a9331054f2cafc93d2b6eec918a.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
 
   
 }
@@ -17,23 +23,13 @@
 .homepage-inner-wrapper {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 100%;
   max-width: 960px;
   margin: auto;
   backdrop-filter: blur(2px);
   text-align: center;
   padding: 20px;
 }
-
-
-.header-search-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 10px; 
-}
-
-
 
 .login-signup-wrapper {
   width: 100%;
@@ -50,6 +46,7 @@
   width: 50%;
   font-family: 'Times New Roman', Times, serif;
   font-size: 24px;
+
 }
 .login-modal-header {
   display: flex;
