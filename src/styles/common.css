@@ -9,12 +9,15 @@
 
 .homepage-outer-wrapper {
   width: 100%;
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
   padding: 50px;
   height: 80%;
   background-image: url("https://people.com/thmb/TqRgcEn65STk2WOu3f4ZWf5vBPU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(959x584:961x586)/dog-e10b5a9331054f2cafc93d2b6eec918a.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 
 
   
@@ -25,10 +28,10 @@
   flex-direction: column;
   width: 100%;
   max-width: 960px;
-  margin: auto;
+  margin: 0;
   backdrop-filter: blur(2px);
   text-align: center;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 .login-signup-wrapper {
@@ -40,12 +43,11 @@
 }
 
 .header-wrapper {
-  text-align: center;
-  margin: auto;
   height: 350px;
-  width: 50%;
+  width: 100%;
   font-family: 'Times New Roman', Times, serif;
   font-size: 24px;
+  color:#F0EAD6;
 
 }
 .login-modal-header {
@@ -318,8 +320,8 @@ textarea {
 } 
 
 .commitment-section {
-  font-size: 1,2rem;
-  color: #555;
+  font-size: 1.5rem;
+  color: #FFFFF0;
   margin-top: 20px;
 }
 
@@ -386,6 +388,16 @@ textarea {
   width: 80%;
 }
 
+.adoption-foster-info {
+  height: 100px;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+.welcome-message {
+  font-size: 1.5rem;
+}
 
 @media (max-width: 768px) {
   .header-wrapper {

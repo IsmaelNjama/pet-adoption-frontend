@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://18.206.35.214:5050",
+  baseURL: "http://3.87.195.106:5050",
 });
 
 const petsApi = axios.create({
-  baseURL: "http://18.206.35.214:5050",
+  baseURL: "http://3.87.195.106:5050",
 });
 
 const getHeaders = () => {

@@ -2,15 +2,15 @@ import React from "react";
 
 function About() {
   return (
-    <div>
-      <h3>Pet Adoption Hub</h3>
+    <div className="adoption-foster-info">
+      <h3>Why Choose Adoption or Foster</h3>
       <p>
-        of type and scrambled it to make a type specimen book. It has survived
-        not only five centuries, but also the leap into electronic typesetting,
-        remaining essentially unchanged. It was popularised in the 1960s with
-        the release of Letraset sheets containing Lorem Ipsum passages, and more
-        recently with desktop publishing software like Aldus PageMaker including
-        versions of Lorem Ipsum
+        Adopting or fostering a pet isn't just about finding a new addition to
+        your family or providing a temporary home; it's about giving a loving
+        environment to an animal in need. Each adoption or fostering from the
+        Pet Adoption Hub supports our mission of promoting responsible pet
+        ownership and ending pet homelessness. When you choose adoption or
+        fostering, you're not just changing one life; you're changing two.
       </p>
     </div>
   );
