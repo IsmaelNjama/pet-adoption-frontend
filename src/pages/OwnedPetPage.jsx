@@ -3,7 +3,6 @@ import OwnedPetsContext from "../context/OwnedPetsContext";
 import PetReturnButton from "../components/buttons/PetReturnButton";
 import PetDetailsContext from "../context/PetDetailsContext";
 import { GET } from "../utils/api";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
 function OwnedPetPage() {

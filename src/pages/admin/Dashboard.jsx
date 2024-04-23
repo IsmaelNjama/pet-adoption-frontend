@@ -1,14 +1,13 @@
 import React, { useContext } from "react";
 import AllUsers from "../../components/AllUsers";
 import AllPets from "../../components/AllPets";
-import LogOut from "../../components/LogOut";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import ShowAllUsersContext from "../../context/ShowAllUsersContext";
 import AddPetModal from "../../components/modals/AddPetModal";
 
 function Dashboard() {
-  const { showAllUsers, setShowAllUsers } = useContext(ShowAllUsersContext);
+  const { setShowAllUsers } = useContext(ShowAllUsersContext);
   const navigate = useNavigate();
   const handleGetUsersList = () => {
     navigate("/AllUsers");

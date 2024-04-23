@@ -25,6 +25,7 @@ import OwnedPetPage from "./pages/OwnedPetPage";
 import UserProfileContext from "./context/UserProfileContext";
 import UploadImageContext from "./context/UploadImageContext";
 import LoginModal from "./components/modals/LoginModal";
+import Footer from "./components/Footer";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
