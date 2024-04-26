@@ -90,8 +90,12 @@ function NavBar() {
             )}
           </Nav>
 
-          <LoginModal />
-          <SignupModal />
+          {!isLoggedIn && (
+            <div className="modal-display">
+              <LoginModal />
+              <SignupModal />
+            </div>
+          )}
 
           <Form className="d-flex gap-3">
             <Button
