@@ -6,6 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useNavigate } from "react-router-dom";
 import FirstNameContext from "../context/FirstNameContext";
+import LastNameContext from "../context/LastNameContext";
 import { GET } from "../utils/api";
 import LoggedInContext from "../context/LoggedInContext";
 import { LuLogOut } from "react-icons/lu";
@@ -18,7 +19,8 @@ import SignupModal from "./modals/SignupModal";
 
 function NavBar() {
   const [isdisabled, setIsdisabled] = useState(false);
-  const { firstname } = useContext(FirstNameContext);
+  const { firstname, setFirstname } = useContext(FirstNameContext);
+  const { setLastname } = useContext(LastNameContext);
   const { isLoggedIn, setIsLoggedIn, userId, setUserId } =
     useContext(LoggedInContext);
   const { setProfileDetails } = useContext(UserProfileContext);
@@ -52,6 +54,8 @@ function NavBar() {
     localStorage.clear();
     setIsLoggedIn(false);
     setUserId(null);
+    setFirstname("");
+    setLastname("");
     navigate("/");
   };
 

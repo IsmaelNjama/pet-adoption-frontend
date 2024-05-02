@@ -29,8 +29,12 @@ import Footer from "./components/Footer";
 
 function App() {
   const [showLogin, setShowLogin] = useState(false);
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
+  const [firstname, setFirstname] = useState(
+    JSON.parse(localStorage.getItem("firstname"))
+  );
+  const [lastname, setLastname] = useState(
+    JSON.parse(localStorage.getItem("lastname"))
+  );
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [showAllUsers, setShowAllUsers] = useState(false);
