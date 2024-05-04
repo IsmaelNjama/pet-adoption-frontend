@@ -15,7 +15,7 @@ function LoginModal() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [canLogIn, setCanLogIn] = useState(false);
-  const [loginError, setLoginError] = useState(false);
+  const [loginError, setLoginError] = useState(null);
   const { firstname, setFirstname } = useContext(FirstNameContext);
   const { lastname, setLastname } = useContext(LastNameContext);
 
@@ -24,7 +24,6 @@ function LoginModal() {
   const { isLoggedIn, setIsLoggedIn, setUserId } = useContext(LoggedInContext);
 
   const handleLoggedIn = async () => {
-    setIsLoggedIn(true);
     const body = {
       email: loginEmail,
       password: loginPassword,
@@ -36,10 +35,11 @@ function LoginModal() {
       localStorage.setItem("USER_ID", loggedUserResponse.data.user._id);
       setUserId(loggedUserResponse.data.user._id);
       if (loggedUserResponse.status === 200) {
-        setShowLogin(false);
         setFirstname(loggedUserResponse.data.user.firstname);
         setLastname(loggedUserResponse.data.user.lastname);
         navigate("/LoggedInPage");
+        setShowLogin(false);
+        setIsLoggedIn(true);
         localStorage.setItem("USER", loggedUserResponse.data.token.accessToken);
       }
     } catch (error) {
@@ -93,7 +93,7 @@ function LoginModal() {
             </Form.Group>
           </Form>
         </Modal.Body>
-        {loginError && <div className="form-input-errors">{loginError}</div>}-{" "}
+        {loginError && <div className="form-input-errors">{loginError}</div>}
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Back

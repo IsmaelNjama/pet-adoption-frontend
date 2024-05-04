@@ -423,6 +423,8 @@ textarea {
   display: flex;
 }
 
+
+
 @media (max-width: 768px) {
   .header-wrapper {
     padding: 10px;
