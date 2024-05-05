@@ -363,16 +363,16 @@ textarea {
 
 
 .nav-title {
-  font-family: 'Silkscreen', sans-serif;
-  font-weight: bolder;
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
   color: magenta;
   font-size: x-large;
 }
 
 .nav-my-pets {
-  font-family: 'Rubik Moonrocks', sans-serif;
+  font-family: "Rajdhani", sans-serif;
   font-weight: bolder;
-  color: goldenrod;
+  color: whitesmoke;
   font-size: x-large;
 
 }
