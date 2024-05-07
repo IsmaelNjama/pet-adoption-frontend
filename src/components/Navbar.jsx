@@ -64,7 +64,7 @@ function NavBar() {
   }, [isLoggedIn]);
 
   return (
-    <Navbar expand="lg" className="nav-outer-container">
+    <Navbar expand="lg" className="nav-outer-container sticky-top">
       <Container fluid className="nav-container">
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
