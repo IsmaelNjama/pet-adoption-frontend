@@ -5,6 +5,7 @@ import LoggedInContext from "../context/LoggedInContext";
 import Stack from "react-bootstrap/Stack";
 import "../styles/common.css";
 import { Link } from "react-router-dom";
+import PopularPetsList from "../components/PopularPetsList";
 
 function LoggedInPage() {
   const { firstname } = useContext(FirstNameContext);
@@ -44,6 +45,9 @@ function LoggedInPage() {
           </p>
         </div>
       )}
+      <div className="text-center">
+        <PopularPetsList />
+      </div>
     </div>
   );
 }

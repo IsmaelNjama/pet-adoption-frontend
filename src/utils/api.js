@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://54.86.117.80:5050",
+  baseURL: "http://localhost:5050",
 });
 
 const petsApi = axios.create({
-  baseURL: "http://54.86.117.80:5050",
+  baseURL: "http://localhost:5050",
 });
 
 const getHeaders = () => {
@@ -132,6 +132,17 @@ export const petsUpdatePUT = (url, body, params = {}) => {
   return new Promise(async (resolve, reject) => {
     try {
       const resp = await petsApi.put(url, body, { ...getHeaders(), params });
+      resolve(resp.data);
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
+export const getThreePets = (url, params = {}) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const resp = await petsApi.get(url, { ...getHeaders(), params });
       resolve(resp.data);
     } catch (error) {
       reject(error);
