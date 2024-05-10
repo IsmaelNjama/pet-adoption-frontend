@@ -64,7 +64,7 @@
   text-align: center;
   /* width: 100%; */
   max-width: 1200px;
-  height: 100vh;
+  height: 100%;
   margin: auto;
 }
 
@@ -153,7 +153,7 @@ textarea {
   width: 100%;
   border: none;
 }
-.pet-card-list-wrapper {
+.pet-card-list-wrapper, .popular-pet-card-list-wrapper {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -161,6 +161,14 @@ textarea {
   gap:1rem;
 
 }
+
+.popular-pet-card-list-wrapper {
+  margin-top: 2rem;
+  justify-content: center;
+  gap: 20px;
+
+}
+
 
 .pet-card-container {
   height: 100vh;
@@ -203,6 +211,35 @@ textarea {
 
 .pet-card {
   padding: 10px;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgb(0, 0, 0,0.1);
+}
+
+.pet-card:hover {
+  transform: translateY(-5px);
+}
+
+.pet-card .card-body {
+  padding: 1.5rem;
+}
+
+.pet-card .card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.text-center {
+  text-align: center;
+  color: rgb(153, 245, 15)
+}
+
+.popular-pets-wrapper p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #555;
+
 }
 
 .dashboard-sidebar {
@@ -303,7 +340,7 @@ textarea {
 .welcome-section {
 
   padding: 40px;
-  margin-top: 40px;
+  margin-top: 5px;
   background-color: #ffffff;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   border-radius: 10px;

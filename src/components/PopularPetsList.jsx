@@ -18,21 +18,26 @@ function PopularPetsList() {
   };
 
   return (
-    <div className="pet-card-list-wrapper">
-      {popularPets.map((pet) => (
-        <Card className="pet-card" key={pet._id} style={{ width: "18rem" }}>
-          <Card.Img
-            variant="top"
-            src={pet.imageUrl}
-            style={{ width: "17rem", height: "200px" }}
-          />
-          <Card.Body>
-            <Card.Title>{pet.name}</Card.Title>
-
-            <Button variant="primary">See more details...</Button>
-          </Card.Body>
-        </Card>
-      ))}
+    <div className="popular-pets-wrapper">
+      <h2 className="text-center">Top Searched Pets </h2>
+      <p>
+        Whilst you can search for specific pets, we thought you'd like to try
+        these popular pets{" "}
+      </p>
+      <div className="popular-pet-card-list-wrapper">
+        {popularPets.map((pet) => (
+          <Card className="pet-card" key={pet._id}>
+            <Card.Img
+              variant="top"
+              src={pet.imageUrl}
+              style={{ width: "17rem", height: "200px" }}
+            />
+            <Card.Body className="card-body">
+              <Card.Title>{pet.name}</Card.Title>
+            </Card.Body>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 }
